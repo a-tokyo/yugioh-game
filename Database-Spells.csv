@@ -1,0 +1,10 @@
+Spell,Card Destruction,Each player discards their entire hand then draws the same number of cards they discarded.
+Spell,Change Of Heart,You choose one monster from your opponent and add it to your own monsters. 
+Spell,Dark Hole,Destroy all monsters on the field.
+Spell,Graceful Dice,Generates a random number between 1 and 10. All monsters you currently control gain ATK and DEF equal to the random number x 100
+Spell,Harpie's Feather Duster,Destroy all spell cards your opponent controls.
+Spell,Heavy Storm,Destroy all spell cards on the board for both players
+Spell,Mage Power,Choose one monster from the field. This monster gains 500 ATK and DEF for each Spell Card you have on the field.
+Spell,Monster Reborn,Summon the monster with the highest attacking power in t=both graveyards into your own monster area. This monster does not count in your own (1 monster per turn) rule. This monster does not require any sacrifices regardless its level.
+Spell,Pot of Greed,Draw 2 extra cards.
+Spell,Raigeki,Destroy all monsters your opponent controls.
