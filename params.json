@@ -1,0 +1,6 @@
+{
+  "name": "Yugioh-game",
+  "tagline": "The Yugi-Oh card game.",
+  "body": "# Yugioh game\r\n\r\n## Description\r\nIn this game, two players Duel each other using a variety of Monster, Spell, and Trap Cards to defeat their opponent's monsters and be the first to drop the other's Life Points to 0.\r\nThe game is written in the Java language.\r\n\r\n## Demo\r\nJust run the java application and enjoy the game.\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
