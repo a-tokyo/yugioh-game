@@ -6,3 +6,5 @@ The game is written in the Java language.
 
 ## Demo
 Just run the java application and enjoy the game.
+
+teste de alteração
