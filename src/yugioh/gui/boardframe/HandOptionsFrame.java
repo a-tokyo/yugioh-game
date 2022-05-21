@@ -20,17 +20,17 @@ import src.yugioh.gui.GUI;
 @SuppressWarnings("serial")
 public class HandOptionsFrame extends JFrame implements ActionListener{
 
-	JButton leftButton = new JButton ("Summon Monster");
-	JButton rightButton = new JButton ("Set Monster");
-	JButton cancelButton = new JButton ("Cancel");
+	JButton leftButton = new JButton ("Invocar Monstro");
+	JButton rightButton = new JButton ("\n" + "Definir Monstro");
+	JButton cancelButton = new JButton ("Cancelar");
 	SpellCard spell;
 	MonsterCard monster;
 	public HandOptionsFrame(boolean isMonsterOptions , Card card){
-		super("Choose Action");
+		super("\n" + "Escolher ação");
 		if(!isMonsterOptions){
 			spell = (SpellCard)card;
-			leftButton.setText("Activate Spell");
-			rightButton.setText("Set Spell");
+			leftButton.setText("\n" + "Ativar Feitiço");
+			rightButton.setText("Definir feitiço");
 		}
 		else
 			monster = (MonsterCard)card;
@@ -65,14 +65,14 @@ public class HandOptionsFrame extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getActionCommand().equals("Cancel")){
+		if(e.getActionCommand().equals("Cancelar")){
 			GUI.getBoardFrame().resetHandlers();
 		}else
-			if(e.getActionCommand().equals("Activate Spell")){
+			if(e.getActionCommand().equals("Ativar Feitiço")){
 				activateSpellCard();
 			}
 			else
-				if(e.getActionCommand().equals("Set Spell")){
+				if(e.getActionCommand().equals("Definir Feitiço")){
 					try {
 						Card.getBoard().getActivePlayer().setSpell(spell);
 						GUI.getBoardFrame().setMonsterToSummon(null);
@@ -88,7 +88,7 @@ public class HandOptionsFrame extends JFrame implements ActionListener{
 
 	private void activateSpellCard() {
 		if((spell instanceof ChangeOfHeart || spell instanceof MagePower)){
-			new ConfirmFrame("Please click a monster to activate on");
+			new ConfirmFrame("Por favor, clique em um monstro para ativar");
 			GUI.getBoardFrame().setSpellToActivate(spell);
 			GUI.getBoardFrame().setMonsterToSummon(null);
 		}else{
@@ -103,7 +103,7 @@ public class HandOptionsFrame extends JFrame implements ActionListener{
 	}
 	private void monsterOptions(ActionEvent e){
 		try{
-			if(e.getActionCommand().equals("Summon Monster")){
+			if(e.getActionCommand().equals("Invocar Monstro")){
 				if(monster.getLevel()<5){
 					Card.getBoard().getActivePlayer().summonMonster(monster);
 					GUI.getBoardFrame().setMonsterToSummon(null);
@@ -113,7 +113,7 @@ public class HandOptionsFrame extends JFrame implements ActionListener{
 				}
 				GUI.getBoardFrame().setSpellToActivate(null);
 			}
-			if(e.getActionCommand().equals("Set Monster")){
+			if(e.getActionCommand().equals("Definir Monstro")){
 				if(monster.getLevel()<5){
 					Card.getBoard().getActivePlayer().setMonster(monster);
 					GUI.getBoardFrame().setMonsterToSummon(null);
@@ -133,11 +133,11 @@ public class HandOptionsFrame extends JFrame implements ActionListener{
 		else 
 			GUI.getBoardFrame().setSacrificesCount(2);
 		if(Card.getBoard().getActivePlayer().getField().getMonstersArea().size()>=GUI.getBoardFrame().getSacrificesCount()){
-			new ConfirmFrame("Please click "+GUI.getBoardFrame().getSacrificesCount()+" monster(s) to sacrifice");
+			new ConfirmFrame("Por favor clique "+GUI.getBoardFrame().getSacrificesCount()+" monstro(s) para sacrificar");
 			GUI.getBoardFrame().setMonsterToSummon(monster);
 			GUI.getBoardFrame().setSacrificeAttack(isAttackMode);
 		}else{
-			GUI.errorFrame(new Exception("You don't have enough sacrifices."));
+			GUI.errorFrame(new Exception("Você não tem sacrifícios suficientes."));
 		}
 	}
 }

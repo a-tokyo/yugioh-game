@@ -116,7 +116,7 @@ public class MonsterButton extends CardButton implements ActionListener{
 			try{
 				if(!Card.getBoard().getActivePlayer().declareAttack(monster) ){ // attacks life if possible
 					if(Card.getBoard().getActivePlayer().getField().getMonstersArea().contains(monster)){
-					new ConfirmFrame("Please choose a monster to attack");
+					new ConfirmFrame("Por favor, escolha um monstro para atacar");
 					GUI.getBoardFrame().setAttackingMonster(monster);
 					}
 				}

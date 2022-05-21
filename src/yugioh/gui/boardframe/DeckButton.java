@@ -1,7 +1,6 @@
 package src.yugioh.gui.boardframe;
 
-import java.awt.Dimension;
-import java.awt.Font;
+import java.awt.*;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,7 +17,8 @@ public class DeckButton extends JButton {
 		super(deck);
 		this.active = active;
 		setHorizontalTextPosition(SwingConstants.CENTER);
-		setFont(new Font("", Font.ITALIC, 18));
+		setFont(new Font("", Font.ITALIC, 22));
+		//setForeground(Color.ORANGE);
 		setForeground(java.awt.Color.WHITE);
 		setPreferredSize(new Dimension(CardButton.getDimension('W'),150));
 		updateDeck();

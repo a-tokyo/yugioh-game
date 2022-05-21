@@ -18,8 +18,8 @@ public class PlayersPanel extends JPanel{
 		setSize(270, 20);
 		setBackground(Color.BLACK);
 		player = new JLabel(" "+ s + " ");
-		player.setFont(new Font("Calibri",Font.ITALIC,18));
-		player.setForeground(Color.WHITE);
+		player.setFont(new Font("Calibri",Font.ITALIC, 18));
+		player.setForeground(Color.WHITE );
 		player.setMinimumSize(new Dimension());
 		nameField = new JTextField(s);
 		nameField.setPreferredSize(new Dimension(210,25));

@@ -22,7 +22,7 @@ public class PlayerNamePanel extends JPanel {
 		this.active = active;
 		setLayout(new BorderLayout());
 		setOpaque(false);
-		setPreferredSize(new Dimension(100,200));
+		setPreferredSize(new Dimension(120,200));
 		addPanels();
 		validate();
 	}
@@ -66,13 +66,13 @@ public class PlayerNamePanel extends JPanel {
 	public void updatePhase(){
 		Phase current = Card.getBoard().getActivePlayer().getField().getPhase();
 		if(current.equals(Phase.MAIN1))
-			currentPhaseLabel.setText("Main 1");
+			currentPhaseLabel.setText("Fase Atual");
 		if(current.equals(Phase.MAIN2))
-			currentPhaseLabel.setText("Main 2");
+			currentPhaseLabel.setText("Fim do Turno");
 		if(current.equals(Phase.BATTLE))
-			currentPhaseLabel.setText("Battle");
+			currentPhaseLabel.setText("Batalha");
 		if(!active){
-			currentPhaseLabel.setText("Inactive");
+			currentPhaseLabel.setText("Aguardando");
 		}
 	}
 	

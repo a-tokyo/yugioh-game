@@ -1,7 +1,6 @@
 package src.yugioh.gui.boardframe;
 
-import java.awt.Dimension;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,12 +16,16 @@ import src.yugioh.gui.GUI;
 public class NextPhaseButton extends JButton implements ActionListener{
 
 	public NextPhaseButton(){
-		super("Next Phase", new ImageIcon("images/NextPhase.jpg"));
-		setPreferredSize(new Dimension(300,165));
+		super("Proxima Fase", new ImageIcon("images/NextPhase.jpg"));
+		setPreferredSize(new Dimension(300,190));
 		setHorizontalTextPosition(SwingConstants.CENTER);
-		setFont(new Font("", Font.ITALIC, 18));
-		setForeground(java.awt.Color.WHITE);
+		setVerticalTextPosition(SwingConstants.BOTTOM);
+		//setFont(new Font("", Font.ITALIC, 18));
+		//setForeground(java.awt.Color.WHITE);
 		addActionListener(this);
+		setFont(new Font("", Font.ITALIC, 20));
+		setForeground(Color.ORANGE);
+		setBackground(Color.BLACK);
 	}
 	public void actionPerformed(ActionEvent e) {
 		if(Card.getBoard().getActivePlayer().getField().getPhase().equals(Phase.MAIN2))
