@@ -65,7 +65,7 @@ public class BoardFrame extends JFrame implements ActionListener{
 		JPanel dataPanel = new JPanel();
 		dataPanel.setLayout(new BorderLayout());
 		dataPanel.setOpaque(false);
-		dataPanel.setSize(1366,768);
+		dataPanel.setSize(1366,820);//766?
 		dataPanel.add(opponentHandPanel,BorderLayout.NORTH);
 		dataPanel.add(fieldPanel, BorderLayout.CENTER);
 		dataPanel.add(activeHandPanel,BorderLayout.SOUTH);

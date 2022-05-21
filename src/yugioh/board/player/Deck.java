@@ -62,11 +62,11 @@ public class Deck {
 						throw e;
 					}
 
-					System.out.println("Error in reading from file "
-							+ e.getSourceFile() + " at line "
+					System.out.println("Erro ao ler do arquivo "
+							+ e.getSourceFile() + " Na Linha "
 							+ e.getSourceLine());
 					System.out.println(e.getMessage());
-					System.out.println("Please enter another path:");
+					System.out.println("Por favor insira outro caminho: ");
 
 					trials++;
 
@@ -89,8 +89,8 @@ public class Deck {
 					String s = (monsters == null) ? Deck.getMonstersPath()
 							: Deck.getSpellsPath();
 
-					System.out.println("The file \"" + s + "\" is not found.");
-					System.out.println("Please enter another path:");
+					System.out.println("O arquivo \"" + s + "\" não funciona.");
+					System.out.println("Por favor insira outro caminho: ");
 
 					trials++;
 					String path = sc.nextLine();
@@ -135,7 +135,7 @@ public class Deck {
 
 				br.close();
 				throw new MissingFieldException(
-						"The number of fields in the line did not match the expected.",
+						"O número de campos na linha não correspondeu ao esperado.",
 						path, lineNumber);
 
 			} else {
@@ -145,7 +145,7 @@ public class Deck {
 
 					br.close();
 					throw new MissingFieldException(
-							"The number of fields in the line did not match the expected.",
+							"O número de campos na linha não correspondeu ao esperado.",
 							path, lineNumber);
 
 				} else if (cardInfo[0].equalsIgnoreCase("Spell")
@@ -153,7 +153,7 @@ public class Deck {
 
 					br.close();
 					throw new MissingFieldException(
-							"The number of fields in the line did not match the expected.",
+							"O número de campos na linha não correspondeu ao esperado.",
 							path, lineNumber);
 
 				}
@@ -164,7 +164,7 @@ public class Deck {
 				if (cardInfo[i].equals("") || cardInfo[i].equals(" ")) {
 
 					br.close();
-					throw new EmptyFieldException("Empty Field.", path,
+					throw new EmptyFieldException("Campo vazio.", path,
 							lineNumber, i + 1);
 
 				}
@@ -180,7 +180,7 @@ public class Deck {
 				if (!cardInfo[0].equalsIgnoreCase("Spell")) {
 
 					br.close();
-					throw new UnknownCardTypeException("Unknown Card type.",
+					throw new UnknownCardTypeException("Tipo de carta desconhecido.",
 							path, lineNumber, cardInfo[0]);
 
 				}

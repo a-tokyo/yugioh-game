@@ -6,6 +6,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
+
 @SuppressWarnings("serial")
 public class WestImagesPanel extends JPanel {
 	private JLabel activeImage = new JLabel(new ImageIcon("images/YugiDuel.jpg"));

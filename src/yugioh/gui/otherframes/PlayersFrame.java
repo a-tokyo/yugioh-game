@@ -22,14 +22,14 @@ import src.yugioh.gui.boardframe.BoardFrame;
 
 @SuppressWarnings("serial")
 public class PlayersFrame extends JFrame implements ActionListener{
-	PlayersPanel player1Panel = new PlayersPanel("Player 1");
-	PlayersPanel player2Panel = new PlayersPanel("Player 2");
-	JButton playerButton = new JButton("Start Game");
+	PlayersPanel player1Panel = new PlayersPanel("Duelista 1");
+	PlayersPanel player2Panel = new PlayersPanel("Duelista 2");
+	JButton playerButton = new JButton("É HORA DO DUELO!");
 	JLabel image = new JLabel(new ImageIcon("images/gameStart.jpg"));
 	JPanel DataPanel = new JPanel();
 	
 	public PlayersFrame (){
-		super("Players name");
+		super("Nome Duelista");
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		setSize(1024,720);
 		setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
@@ -37,11 +37,11 @@ public class PlayersFrame extends JFrame implements ActionListener{
 		playerButton.addActionListener(this);
 		setLayout(null);
 		setVisible(true);
-		setResizable(false);
+		setResizable(true);
 		setContentPane(image);
-		DataPanel.setOpaque(false);
+		DataPanel.setOpaque(false);//aqui fica os fld
 		DataPanel.setSize(300, 100);
-		DataPanel.setLocation(362,210);
+		DataPanel.setLocation(650,210);
 		DataPanel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.insets.bottom = 5;

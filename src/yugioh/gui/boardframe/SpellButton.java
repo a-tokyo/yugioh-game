@@ -39,7 +39,7 @@ public class SpellButton extends CardButton implements ActionListener{
 	private void spellInFieldAction() {
 		if((spell instanceof ChangeOfHeart || spell instanceof MagePower)){
 			GUI.getBoardFrame().setSpellToActivate(spell);
-			new ConfirmFrame("Please Choose a monster to Activate spell on");
+			new ConfirmFrame("Por favor, escolha um monstro para ativar o feitiço");
 		}else{
 			try {
 				Card.getBoard().getActivePlayer().activateSpell(spell, null);

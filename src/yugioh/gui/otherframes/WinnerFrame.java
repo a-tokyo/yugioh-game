@@ -1,16 +1,11 @@
 package src.yugioh.gui.otherframes;
 
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.*;
+import javax.swing.text.html.ImageView;
 
 import src.yugioh.cards.Card;
 import src.yugioh.gui.GUI;
@@ -19,15 +14,19 @@ import src.yugioh.gui.Main;
 @SuppressWarnings("serial")
 public class WinnerFrame extends JFrame implements ActionListener{
 	JLabel winner = new JLabel();
-	JButton replayButton = new JButton("Replay");
-	JButton exitGameButton = new JButton("Exit Game");
+	JButton replayButton = new JButton("NOVA BATALHA");
+	JButton exitGameButton = new JButton("SAIR DO JOGO");
 	
 	public WinnerFrame(){
-		super("Winner!");
+		super("CAMPEAO!"); //, new ImageIcon("images/WinnerIcon.jpg")
+		//WinnerFrame.
+		//new ImageIcon("images/WinnerIcon.jpg");
+
 		GUI.getBoardFrame().dispose();
-		winner.setText(" Congratulations "+Card.getBoard().getWinner().getName()+", You won!");
+		winner.setText(" FELICITAÇÕES "+Card.getBoard().getWinner().getName()+", VOCÊ GANHOU!");
 		winner.setFont(new Font(winner.getFont().getName(),Font.PLAIN,18));
-		setSize(350, 120);
+		//setSize(350, 120);
+		setSize(1000, 476);
 		setLayout(new GridBagLayout());
 		setVisible(true);
 		setResizable(false);
@@ -50,11 +49,11 @@ public class WinnerFrame extends JFrame implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent arg0) {
-		if(arg0.getActionCommand().equals("Replay")){
+		if(arg0.getActionCommand().equals("NOVA BATALHA")){
 		GUI.getWinnerFrame().dispose();
 		Main.startNewGame();
 		}else
-		if(arg0.getActionCommand().equals("Exit Game"))
+		if(arg0.getActionCommand().equals("SAIR DO JOGO"))
 			System.exit(0);
 	}
 }

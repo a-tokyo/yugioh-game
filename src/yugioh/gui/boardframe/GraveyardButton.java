@@ -1,6 +1,6 @@
 package src.yugioh.gui.boardframe;
 
-import java.awt.Dimension;
+import java.awt.*;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -28,6 +28,10 @@ public class GraveyardButton extends JButton {
 			if(current instanceof MonsterCard){
 				setIcon(new ImageIcon("images/"+current.getName()+".jpg"));
 				setToolTipText(current.getName()+"\n ATK: "+((MonsterCard)current).getAttackPoints()+"\n DEF: "+((MonsterCard)current).getDefensePoints()+"\n Level: "+((MonsterCard)current).getLevel());
+				//add rodrigo
+				setFont(new Font("", Font.ITALIC, 20));
+				setForeground(Color.ORANGE);
+				setBackground(Color.BLACK);
 			}
 			else{ setIcon(new ImageIcon("images/"+current.getName()+".png"));
 			setToolTipText(current.getName());

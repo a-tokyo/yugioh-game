@@ -14,8 +14,8 @@ import javax.swing.JLabel;
 public class ConfirmFrame extends JFrame implements ActionListener{
 	
 	public ConfirmFrame(String message) {
-		super("Confirm Action");
-		JButton button = new JButton("Confirm");
+		super("Confirmar Ação");
+		JButton button = new JButton("Confirmar");
 		JLabel messageLabel = new JLabel(message);
 		setLayout(new GridBagLayout());
 		setSize(350, 110);

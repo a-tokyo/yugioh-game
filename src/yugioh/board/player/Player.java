@@ -21,7 +21,7 @@ public class Player implements Duelist {
 	public Player(String name) throws IOException, UnexpectedFormatException {
 
 		this.name = name;
-		this.lifePoints = 8000;
+		this.lifePoints = 4000;
 		this.field = new Field();
 		addedMonsterThisTurn = false;
 
