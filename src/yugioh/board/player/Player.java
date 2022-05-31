@@ -15,7 +15,7 @@ public class Player implements Duelist {
 
 	private final String name;
 	private int lifePoints;
-	private Field field;
+	public Field field;
 	private boolean addedMonsterThisTurn;
 
 	public Player(String name) throws IOException, UnexpectedFormatException {
@@ -236,19 +236,19 @@ public class Player implements Duelist {
 
 	}
 
-	@Override
-	public void addCardToHand() {
+//	@Override
+//	public void addCardToHand() {
+//
+//		this.field.addNCardsToHand(1);
+//
+//	}
 
-		this.field.addCardToHand();
-
-	}
-
-	@Override
-	public void addNCardsToHand(int n) {
-
-		this.field.addNCardsToHand(n);
-
-	}
+//	@Override
+//	public void addNCardsToHand(int n) {
+//
+//		this.field.addNCardsToHand(n);
+//
+//	}
 
 	public int getLifePoints() {
 		return lifePoints;

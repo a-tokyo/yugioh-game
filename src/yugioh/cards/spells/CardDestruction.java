@@ -15,11 +15,11 @@ public class CardDestruction extends SpellCard {
 
 		int discardedCards = Card.getBoard().getActivePlayer().getField()
 				.discardHand();
-		Card.getBoard().getActivePlayer().addNCardsToHand(discardedCards);
+		Card.getBoard().getActivePlayer().field.addNCardsToHand(discardedCards);
 
 		discardedCards = Card.getBoard().getOpponentPlayer().getField()
 				.discardHand();
-		Card.getBoard().getOpponentPlayer().addNCardsToHand(discardedCards);
+		Card.getBoard().getOpponentPlayer().field.addNCardsToHand(discardedCards);
 
 	}
 
