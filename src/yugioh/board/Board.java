@@ -35,12 +35,12 @@ public class Board {
 
 	public void startGame(Player p1, Player p2) {
 
-		p1.addNCardsToHand(5);
-		p2.addNCardsToHand(5);
+		p1.field.addNCardsToHand(5);
+		p2.field.addNCardsToHand(5);
 
 		whoStarts(p1, p2);
 
-		activePlayer.addCardToHand();
+		activePlayer.field.addNCardsToHand(1);
 
 	}
 
@@ -49,7 +49,7 @@ public class Board {
 		Player temp = activePlayer;
 		activePlayer = opponentPlayer;
 		opponentPlayer = temp;
-		activePlayer.addCardToHand();
+		activePlayer.field.addNCardsToHand(1);
 
 	}
 

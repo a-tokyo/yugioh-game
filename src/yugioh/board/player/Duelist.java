@@ -24,9 +24,9 @@ public interface Duelist {
 	 
 	public boolean declareAttack(MonsterCard activeMonster, MonsterCard opponentMonster);
 	 
-	public void addCardToHand();
+//	public void addCardToHand();
 	 
-	public void addNCardsToHand(int n);
+//	public void addNCardsToHand(int n);
 	 
 	public void endPhase();
 	 

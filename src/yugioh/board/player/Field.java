@@ -257,29 +257,39 @@ public class Field {
 
 	}
 
-	public void addCardToHand() {
-
-		if (deck.getDeck().size() == 0) {
-
-			if (this == Card.getBoard().getActivePlayer().getField())
-				Card.getBoard().setWinner(Card.getBoard().getOpponentPlayer());
-			else
-				Card.getBoard().setWinner(Card.getBoard().getActivePlayer());
-
-			return;
-		}
-
-		Card temp = deck.drawOneCard();
-		hand.add(temp);
-		temp.setLocation(Location.HAND);
-
-	}
+//	public void addCardToHand() {
+//
+//		if (deck.getDeck().size() == 0) {
+//
+//			if (this == Card.getBoard().getActivePlayer().getField())
+//				Card.getBoard().setWinner(Card.getBoard().getOpponentPlayer());
+//			else
+//				Card.getBoard().setWinner(Card.getBoard().getActivePlayer());
+//
+//			return;
+//		}
+//
+//		Card temp = deck.drawOneCard();
+//		hand.add(temp);
+//		temp.setLocation(Location.HAND);
+//
+//	}
 
 	public void addNCardsToHand(int n) {
+		for (int j = 0; j < n; j++) {
+			if (deck.getDeck().size() == 0) {
+				if (this == Card.getBoard().getActivePlayer().getField()) {
+					Card.getBoard().setWinner(Card.getBoard().getOpponentPlayer());
+				} else {
+					Card.getBoard().setWinner(Card.getBoard().getActivePlayer());
+				}
+				return;
+			}
 
-		for (int j = 0; j < n; j++)
-			addCardToHand();
-
+			Card temp = deck.drawOneCard();
+			hand.add(temp);
+			temp.setLocation(Location.HAND);
+		}
 	}
 
 	public Phase getPhase() {

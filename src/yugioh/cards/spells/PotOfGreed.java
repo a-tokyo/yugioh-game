@@ -13,7 +13,7 @@ public class PotOfGreed extends SpellCard {
 
 	public void action(MonsterCard monster) {
 
-		Card.getBoard().getActivePlayer().addNCardsToHand(2);
+		Card.getBoard().getActivePlayer().field.addNCardsToHand(2);
 
 	}
 
