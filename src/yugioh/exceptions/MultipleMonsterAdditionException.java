@@ -4,7 +4,7 @@ package src.yugioh.exceptions;
 public class MultipleMonsterAdditionException extends RuntimeException {
 
 	public MultipleMonsterAdditionException() {
-		super("Multiple monster addition is illegal.");
+		super("Mutiplas invocações é ilegal.");
 	}
 
 	public MultipleMonsterAdditionException(String message) {

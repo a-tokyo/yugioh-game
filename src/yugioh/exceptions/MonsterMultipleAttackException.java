@@ -4,7 +4,7 @@ package src.yugioh.exceptions;
 public class MonsterMultipleAttackException extends RuntimeException {
 
 	public MonsterMultipleAttackException() {
-		super("Attacking twice with the same monster is illegal.");
+		super("Atacar duas vezes com o mesmo monstro é ilegal.");
 	}
 
 	public MonsterMultipleAttackException(String message) {

@@ -4,6 +4,6 @@ package src.yugioh.exceptions;
 public class IllegalSpellTargetException extends Exception {
 
 	public IllegalSpellTargetException(){
-		super("Illegal Spell Target");
+		super("Alvo de Feitiço Ilegal");
 	}
 }

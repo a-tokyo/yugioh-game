@@ -1,4 +1,4 @@
-package src.yugioh.gui.boardframe;
+//package src.yugioh.gui.boardframe;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -10,6 +10,10 @@ import javax.swing.JPanel;
 
 import src.yugioh.cards.MonsterCard;
 import src.yugioh.cards.spells.SpellCard;
+import src.yugioh.gui.boardframe.EastButtonsPanel;
+import src.yugioh.gui.boardframe.FieldPanel;
+import src.yugioh.gui.boardframe.HandPanel;
+import src.yugioh.gui.boardframe.WestImagesPanel;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;

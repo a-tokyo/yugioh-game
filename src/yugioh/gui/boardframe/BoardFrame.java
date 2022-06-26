@@ -7,7 +7,11 @@ import javax.swing.JFrame;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 
+//import javafx.scene.control.Label;
+//
+// import javafx.scene.image.Image;
 import src.yugioh.cards.MonsterCard;
 import src.yugioh.cards.spells.SpellCard;
 
@@ -44,8 +48,8 @@ public class BoardFrame extends JFrame implements ActionListener{
 	private void setFramePrefrences(){
 		setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(1367, 792);
-//		setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);		
+		setSize(1500, 850);//1367, 792 //1500, 950
+//		setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
 //		setUndecorated(true);
 		setVisible(true);	
 		setResizable(false);
@@ -60,17 +64,19 @@ public class BoardFrame extends JFrame implements ActionListener{
 		eastButtonsPanel =new EastButtonsPanel();
 	}
 
-	private void addPanels(){
-		setContentPane(new JLabel(new ImageIcon("images/background.jpg")));
+	private void addPanels(){//java.awt.Image.SCALE_SMOOTH
+		setContentPane(new JLabel(new ImageIcon("images/background.png"))); //.setSize(1450, 800)
+		
+		//ImageIcon.setSize(1450, 900)	;
 		JPanel dataPanel = new JPanel();
 		dataPanel.setLayout(new BorderLayout());
 		dataPanel.setOpaque(false);
-		dataPanel.setSize(1366,820);//766?
+		dataPanel.setSize(1450, 800);//1366,820
 		dataPanel.add(opponentHandPanel,BorderLayout.NORTH);
 		dataPanel.add(fieldPanel, BorderLayout.CENTER);
 		dataPanel.add(activeHandPanel,BorderLayout.SOUTH);
 		dataPanel.add(eastButtonsPanel,BorderLayout.EAST);
-		dataPanel.add(westImagesPanel,BorderLayout.WEST);
+		dataPanel.add(westImagesPanel,BorderLayout.WEST);//image Players
 		add(dataPanel);
 	}
 	

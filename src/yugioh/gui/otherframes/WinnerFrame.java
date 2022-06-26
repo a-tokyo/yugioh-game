@@ -5,8 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-import javax.swing.text.html.ImageView;
+//import javax.swing.text.html.ImageView;
 
+//import javafx.scene.layout.BackgroundImage;
 import src.yugioh.cards.Card;
 import src.yugioh.gui.GUI;
 import src.yugioh.gui.Main;
@@ -21,6 +22,7 @@ public class WinnerFrame extends JFrame implements ActionListener{
 		super("CAMPEAO!"); //, new ImageIcon("images/WinnerIcon.jpg")
 		//WinnerFrame.
 		//new ImageIcon("images/WinnerIcon.jpg");
+		setContentPane(new JLabel(new ImageIcon("images/images/WinnerIcon.jpg"))); //nao funcionou
 
 		GUI.getBoardFrame().dispose();
 		winner.setText(" FELICITAÇÕES "+Card.getBoard().getWinner().getName()+", VOCÊ GANHOU!");

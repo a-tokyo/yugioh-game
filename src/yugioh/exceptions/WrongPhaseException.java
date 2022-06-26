@@ -4,7 +4,7 @@ package src.yugioh.exceptions;
 public class WrongPhaseException extends RuntimeException {
 
 	public WrongPhaseException() {
-		super("This action is illegal in this phase.");
+		super("Esta ação é ilegal na fase atual.");
 	}
 
 	public WrongPhaseException(String message) {
