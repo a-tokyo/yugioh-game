@@ -4,7 +4,7 @@ package src.yugioh.exceptions;
 public class NoSpellSpaceException extends NoSpaceException {
 
 	public NoSpellSpaceException() {
-		super("Spells Area is full.");
+		super("A área de feitiços está cheia.");
 	}
 
 	public NoSpellSpaceException(String arg0) {

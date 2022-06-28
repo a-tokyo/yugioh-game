@@ -1,4 +1,4 @@
-package src.yugioh.gui.otherframes;
+//package src.yugioh.gui.otherframes;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

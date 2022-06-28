@@ -4,7 +4,7 @@ package src.yugioh.exceptions;
 public class NoMonsterSpaceException extends NoSpaceException {
 
 	public NoMonsterSpaceException() {
-		super("Monsters Area is full.");
+		super("A Área de Monstros está cheia.");
 	}
 
 	public NoMonsterSpaceException(String arg0) {

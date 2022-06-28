@@ -14,7 +14,7 @@ public class CardButton extends JButton {
 	protected static ImageIcon Attack = new ImageIcon("images/AttackMode.png");
 	protected static ImageIcon Defence = new ImageIcon("images/DefenceMode.png");
 	protected static ImageIcon spellIcon = new ImageIcon("images/SpellTrapCardZone.png");
-	private static int height=150;
+	private static int height=155;
 	private static int width = 95;
 	
 	public CardButton() {

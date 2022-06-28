@@ -4,7 +4,7 @@ package src.yugioh.exceptions;
 public class DefenseMonsterAttackException extends RuntimeException {
 
 	public DefenseMonsterAttackException() {
-		super("Defence monsters can't attack.");
+		super("Monstros em defesa não podem atacar.");
 	}
 
 	public DefenseMonsterAttackException(String message) {

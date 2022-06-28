@@ -31,6 +31,6 @@ public class SwitchMonsterModeButton extends JButton implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		GUI.getBoardFrame().setToSwitch(true);
 		new ConfirmFrame("\n" +
-				"Por favor, selecione um monstro para mudar seu modo");
+				"Selecione um monstro para alternar entre ATK e DEF");
 	}
 }

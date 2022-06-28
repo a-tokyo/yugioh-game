@@ -1,4 +1,4 @@
-package src.yugioh.gui.boardframe;
+//package src.yugioh.gui.boardframe;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -7,13 +7,13 @@ import javax.swing.JFrame;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 
-//import javafx.scene.control.Label;
-//
-// import javafx.scene.image.Image;
 import src.yugioh.cards.MonsterCard;
 import src.yugioh.cards.spells.SpellCard;
+import src.yugioh.gui.boardframe.EastButtonsPanel;
+import src.yugioh.gui.boardframe.FieldPanel;
+import src.yugioh.gui.boardframe.HandPanel;
+import src.yugioh.gui.boardframe.WestImagesPanel;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -48,8 +48,8 @@ public class BoardFrame extends JFrame implements ActionListener{
 	private void setFramePrefrences(){
 		setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(1500, 850);//1367, 792 //1500, 950
-//		setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
+		setSize(1500, 950);//1367, 792
+//		setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);		
 //		setUndecorated(true);
 		setVisible(true);	
 		setResizable(false);
@@ -64,10 +64,8 @@ public class BoardFrame extends JFrame implements ActionListener{
 		eastButtonsPanel =new EastButtonsPanel();
 	}
 
-	private void addPanels(){//java.awt.Image.SCALE_SMOOTH
-		setContentPane(new JLabel(new ImageIcon("images/background.png"))); //.setSize(1450, 800)
-		
-		//ImageIcon.setSize(1450, 900)	;
+	private void addPanels(){
+		setContentPane(new JLabel(new ImageIcon("images/background.jpg")));
 		JPanel dataPanel = new JPanel();
 		dataPanel.setLayout(new BorderLayout());
 		dataPanel.setOpaque(false);
