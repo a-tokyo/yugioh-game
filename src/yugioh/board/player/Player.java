@@ -236,20 +236,6 @@ public class Player implements Duelist {
 
 	}
 
-//	@Override
-//	public void addCardToHand() {
-//
-//		this.field.addNCardsToHand(1);
-//
-//	}
-
-//	@Override
-//	public void addNCardsToHand(int n) {
-//
-//		this.field.addNCardsToHand(n);
-//
-//	}
-
 	public int getLifePoints() {
 		return lifePoints;
 	}
