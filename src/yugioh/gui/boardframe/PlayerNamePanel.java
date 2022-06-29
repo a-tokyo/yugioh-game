@@ -31,7 +31,7 @@ public class PlayerNamePanel extends JPanel {
 		add(currentPhaseLabel,BorderLayout.SOUTH);
 		add(lifePointsLabel,BorderLayout.CENTER);
 		add(playerNameLabel, BorderLayout.NORTH);
-		lifePointsLabel.setPreferredSize(new Dimension(30,35));
+		lifePointsLabel.setPreferredSize(new Dimension(30,80));//30,35
 		lifePointsLabel.setFont(new Font("Cambria",Font.ITALIC,20));
 		lifePointsLabel.setForeground(Color.ORANGE);
 		playerNameLabel.setPreferredSize(new Dimension(30,35));
@@ -83,8 +83,14 @@ public class PlayerNamePanel extends JPanel {
 	}
 	
 	public void updateLifePoints(){
+		String Life = "";
+		int i = 0;
 		if(active)
 			lifePointsLabel.setText(""+Card.getBoard().getActivePlayer().getLifePoints());
 		else lifePointsLabel.setText(""+Card.getBoard().getOpponentPlayer().getLifePoints());
+		for(i=0;i!=((Integer.parseInt(lifePointsLabel.getText()))/800);i++){
+			Life += (char)2764;
+		}
+		lifePointsLabel.setText(lifePointsLabel.getText()+"-"+Life);
 	}
 }
