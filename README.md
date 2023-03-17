@@ -1,4 +1,4 @@
-# Yugioh Game Versão Brasileira UTFPR
+# Yugioh Game Versão Brasileira - UTFPR
 
 
 ## Description
@@ -7,4 +7,3 @@ The game is written in the Java language.
 
 ## Demo
 Just run the java application and enjoy the game.
-
