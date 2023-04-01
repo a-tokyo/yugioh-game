@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import eg.edu.guc.yugioh.cards.MonsterCard;
 import eg.edu.guc.yugioh.cards.spells.SpellCard;
+import eg.edu.guc.yugioh.configsGlobais.Logger;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -115,6 +116,9 @@ public class BoardFrame extends JFrame implements ActionListener{
 	}
 
 	public void updateBoardFrame() {
+
+			Logger.startLogs().info("BoardFrame - updateBoardFrame");
+
 			activeHandPanel.updateHand();
 			opponentHandPanel.updateHand();
 			fieldPanel.getActivePlayerPanel().getDeckGraveyardPanel().getDeck().updateDeck();
@@ -193,6 +197,9 @@ public class BoardFrame extends JFrame implements ActionListener{
 	}
 
 	public void resetHandlers() {
+
+		Logger.startLogs().info("BoardFrame - resetHandlers");
+
 		attackingMonster = null;
 		toSwitch = false;
 		spellToActivate = null;
