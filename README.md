@@ -2,8 +2,19 @@
 
 
 ## Description
-In this game, two players Duel each other using a variety of Monster, Spell, and Trap Cards to defeat their opponent's monsters and be the first to drop the other's Life Points to 0.
-The game is written in the Java language.
+Trabalho de Manutenção de Software da UTFPR.
+O objetivo é deixar esse game de Yugioh com melhores praticas de engenharia de software. 
 
-## Demo
-Just run the java application and enjoy the game.
+## Como Rodar:
+- Basta rodar o arquivo Main.java
+
+##IDE:
+- Recomendamos o IntelliJ
+
+
+##Alunos envolvidos:
+Vinicius C. Lodi
+Gabriel B. Refosco
+João Vitor Zisch
+Lucas Lenoch de Souza
+
