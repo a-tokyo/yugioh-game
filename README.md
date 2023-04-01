@@ -8,11 +8,11 @@ O objetivo é deixar esse game de Yugioh com melhores praticas de engenharia de 
 ## Como Rodar:
 - Basta rodar o arquivo Main.java
 
-##IDE:
+## IDE:
 - Recomendamos o IntelliJ
 
 
-##Alunos envolvidos:
+## Alunos envolvidos:
 Vinicius C. Lodi
 Gabriel B. Refosco
 João Vitor Zisch
