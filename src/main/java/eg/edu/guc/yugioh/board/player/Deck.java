@@ -231,6 +231,7 @@ public class Deck {
 
 			if (spell instanceof SpellCard) {
 				clone = createSpellCard(spell);
+				assert clone != null;
 				clone.setLocation(Location.DECK);
 				deck.add(clone);
 			}
@@ -250,8 +251,6 @@ public class Deck {
 			return new GracefulDice(card.getName(), card.getDescription());
 		} else if (card instanceof HarpieFeatherDuster) {
 			return new HarpieFeatherDuster(card.getName(), card.getDescription());
-		} else if (card instanceof HeavyStorm) {
-			return new HeavyStorm(card.getName(), card.getDescription());
 		} else if (card instanceof MagePower) {
 			return new MagePower(card.getName(), card.getDescription());
 		} else if (card instanceof MonsterReborn) {
