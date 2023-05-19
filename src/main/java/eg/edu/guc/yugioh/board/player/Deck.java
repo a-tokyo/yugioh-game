@@ -114,6 +114,15 @@ public class Deck {
 
 	}
 
+
+	private static void handleLoadFieldException(BufferedReader br, String message, String path, int lineNumber)
+			throws IOException, MissingFieldException {
+
+		br.close();
+		throw new MissingFieldException(message, path, lineNumber);
+
+	}
+
 	public ArrayList<Card> loadCardsFromFile(String path) throws IOException,
 			UnexpectedFormatException {
 
@@ -133,30 +142,15 @@ public class Deck {
 
 			if (cardInfo.length == 0) {
 
-				br.close();
-				throw new MissingFieldException(
-						"The number of fields in the line did not match the expected.",
-						path, lineNumber);
+				handleLoadFieldException(br, "No fields available.", path, lineNumber);
 
-			} else {
+			} else if (cardInfo[0].equalsIgnoreCase("Monster") && cardInfo.length != 6) {
 
-				if (cardInfo[0].equalsIgnoreCase("Monster")
-						&& cardInfo.length != 6) {
+				handleLoadFieldException(br, "Monster fields in the line did not match the expected.", path, lineNumber);
 
-					br.close();
-					throw new MissingFieldException(
-							"The number of fields in the line did not match the expected.",
-							path, lineNumber);
+			} else if (cardInfo[0].equalsIgnoreCase("Spell") && cardInfo.length != 3) {
 
-				} else if (cardInfo[0].equalsIgnoreCase("Spell")
-						&& cardInfo.length != 3) {
-
-					br.close();
-					throw new MissingFieldException(
-							"The number of fields in the line did not match the expected.",
-							path, lineNumber);
-
-				}
+				handleLoadFieldException(br, "Spell fields in the line did not match the expected.", path, lineNumber);
 
 			}
 
