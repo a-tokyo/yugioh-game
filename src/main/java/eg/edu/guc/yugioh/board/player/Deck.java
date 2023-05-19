@@ -233,132 +233,58 @@ public class Deck {
 
 	}
 
-	private void buildDeck(ArrayList<Card> Monsters, ArrayList<Card> Spells) {
+	private void buildDeck(ArrayList<Card> monsters, ArrayList<Card> spells) {
+		int monstersQuota = 15;
+		int spellsQuota = 5;
+		Random random = new Random();
 
-		int monstersQouta = 15;
-		int spellsQouta = 5;
-
-		Random r = new Random();
-
-		for (; monstersQouta > 0; monstersQouta--) {
-
-			MonsterCard monster = (MonsterCard) monsters.get(r.nextInt(monsters
-					.size()));
-
-			MonsterCard clone = new MonsterCard(monster.getName(),
-					monster.getDescription(), monster.getLevel(),
-					monster.getAttackPoints(), monster.getDefensePoints());
+		while (monstersQuota > 0) {
+			MonsterCard monster = (MonsterCard) monsters.get(random.nextInt(monsters.size()));
+			MonsterCard clone = new MonsterCard(monster.getName(), monster.getDescription(), monster.getLevel(), monster.getAttackPoints(), monster.getDefensePoints());
 			clone.setMode(monster.getMode());
 			clone.setHidden(monster.isHidden());
 			clone.setLocation(Location.DECK);
-
 			deck.add(clone);
-
+			monstersQuota--;
 		}
 
-		for (; spellsQouta > 0; spellsQouta--) {
-
-			Card spell = spells.get(r.nextInt(spells.size()));
-
+		while (spellsQuota > 0) {
+			Card spell = spells.get(random.nextInt(spells.size()));
 			SpellCard clone;
 
-			if (spell instanceof CardDestruction) {
-
-				clone = new CardDestruction(spell.getName(),
-						spell.getDescription());
+			if (spell instanceof SpellCard) {
+				clone = createSpellCard(spell);
 				clone.setLocation(Location.DECK);
 				deck.add(clone);
-				continue;
-
 			}
 
-			if (spell instanceof ChangeOfHeart) {
-
-				clone = new ChangeOfHeart(spell.getName(),
-						spell.getDescription());
-				clone.setLocation(Location.DECK);
-				deck.add(clone);
-				continue;
-
-			}
-
-			if (spell instanceof DarkHole) {
-
-				clone = new DarkHole(spell.getName(), spell.getDescription());
-				clone.setLocation(Location.DECK);
-				deck.add(clone);
-				continue;
-
-			}
-
-			if (spell instanceof GracefulDice) {
-
-				clone = new GracefulDice(spell.getName(),
-						spell.getDescription());
-				clone.setLocation(Location.DECK);
-				deck.add(clone);
-				continue;
-
-			}
-
-			if (spell instanceof HarpieFeatherDuster) {
-
-				clone = new HarpieFeatherDuster(spell.getName(),
-						spell.getDescription());
-				clone.setLocation(Location.DECK);
-				deck.add(clone);
-				continue;
-
-			}
-
-			if (spell instanceof HeavyStorm) {
-
-				clone = new HeavyStorm(spell.getName(), spell.getDescription());
-				clone.setLocation(Location.DECK);
-				deck.add(clone);
-				continue;
-
-			}
-
-			if (spell instanceof MagePower) {
-
-				clone = new MagePower(spell.getName(), spell.getDescription());
-				clone.setLocation(Location.DECK);
-				deck.add(clone);
-				continue;
-
-			}
-
-			if (spell instanceof MonsterReborn) {
-
-				clone = new MonsterReborn(spell.getName(),
-						spell.getDescription());
-				clone.setLocation(Location.DECK);
-				deck.add(clone);
-				continue;
-
-			}
-
-			if (spell instanceof PotOfGreed) {
-
-				clone = new PotOfGreed(spell.getName(), spell.getDescription());
-				clone.setLocation(Location.DECK);
-				deck.add(clone);
-				continue;
-
-			}
-
-			if (spell instanceof Raigeki) {
-
-				clone = new Raigeki(spell.getName(), spell.getDescription());
-				clone.setLocation(Location.DECK);
-				deck.add(clone);
-				continue;
-
-			}
-
+			spellsQuota--;
 		}
+	}
 
+	private SpellCard createSpellCard(Card card) {
+		if (card instanceof CardDestruction) {
+			return new CardDestruction(card.getName(), card.getDescription());
+		} else if (card instanceof ChangeOfHeart) {
+			return new ChangeOfHeart(card.getName(), card.getDescription());
+		} else if (card instanceof DarkHole) {
+			return new DarkHole(card.getName(), card.getDescription());
+		} else if (card instanceof GracefulDice) {
+			return new GracefulDice(card.getName(), card.getDescription());
+		} else if (card instanceof HarpieFeatherDuster) {
+			return new HarpieFeatherDuster(card.getName(), card.getDescription());
+		} else if (card instanceof HeavyStorm) {
+			return new HeavyStorm(card.getName(), card.getDescription());
+		} else if (card instanceof MagePower) {
+			return new MagePower(card.getName(), card.getDescription());
+		} else if (card instanceof MonsterReborn) {
+			return new MonsterReborn(card.getName(), card.getDescription());
+		} else if (card instanceof PotOfGreed) {
+			return new PotOfGreed(card.getName(), card.getDescription());
+		} else if (card instanceof Raigeki) {
+			return new Raigeki(card.getName(), card.getDescription());
+		}
+		return null;
 	}
 
 	private void shuffleDeck() {
