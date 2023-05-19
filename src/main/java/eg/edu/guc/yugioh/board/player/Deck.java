@@ -108,7 +108,7 @@ public class Deck {
 
 		}
 
-		deck = new ArrayList<Card>();
+		deck = new ArrayList<>();
 		buildDeck(monsters, spells);
 		shuffleDeck();
 
@@ -117,7 +117,7 @@ public class Deck {
 	public ArrayList<Card> loadCardsFromFile(String path) throws IOException,
 			UnexpectedFormatException {
 
-		ArrayList<Card> temp = new ArrayList<Card>();
+		ArrayList<Card> temp = new ArrayList<>();
 
 		String line;
 
@@ -186,41 +186,18 @@ public class Deck {
 				}
 
 				switch (cardInfo[1]) {
-
-				case "Card Destruction":
-					temp.add(new CardDestruction(cardInfo[1], cardInfo[2]));
-					break;
-				case "Change Of Heart":
-					temp.add(new ChangeOfHeart(cardInfo[1], cardInfo[2]));
-					break;
-				case "Dark Hole":
-					temp.add(new DarkHole(cardInfo[1], cardInfo[2]));
-					break;
-				case "Graceful Dice":
-					temp.add(new GracefulDice(cardInfo[1], cardInfo[2]));
-					break;
-				case "Harpie's Feather Duster":
-					temp.add(new HarpieFeatherDuster(cardInfo[1], cardInfo[2]));
-					break;
-				case "Heavy Storm":
-					temp.add(new HeavyStorm(cardInfo[1], cardInfo[2]));
-					break;
-				case "Mage Power":
-					temp.add(new MagePower(cardInfo[1], cardInfo[2]));
-					break;
-				case "Monster Reborn":
-					temp.add(new MonsterReborn(cardInfo[1], cardInfo[2]));
-					break;
-				case "Pot of Greed":
-					temp.add(new PotOfGreed(cardInfo[1], cardInfo[2]));
-					break;
-				case "Raigeki":
-					temp.add(new Raigeki(cardInfo[1], cardInfo[2]));
-					break;
-				default:
-					throw new UnknownSpellCardException("Unknown Spell card",
+					case "Card Destruction" -> temp.add(new CardDestruction(cardInfo[1], cardInfo[2]));
+					case "Change Of Heart" -> temp.add(new ChangeOfHeart(cardInfo[1], cardInfo[2]));
+					case "Dark Hole" -> temp.add(new DarkHole(cardInfo[1], cardInfo[2]));
+					case "Graceful Dice" -> temp.add(new GracefulDice(cardInfo[1], cardInfo[2]));
+					case "Harpie's Feather Duster" -> temp.add(new HarpieFeatherDuster(cardInfo[1], cardInfo[2]));
+					case "Heavy Storm" -> temp.add(new HeavyStorm(cardInfo[1], cardInfo[2]));
+					case "Mage Power" -> temp.add(new MagePower(cardInfo[1], cardInfo[2]));
+					case "Monster Reborn" -> temp.add(new MonsterReborn(cardInfo[1], cardInfo[2]));
+					case "Pot of Greed" -> temp.add(new PotOfGreed(cardInfo[1], cardInfo[2]));
+					case "Raigeki" -> temp.add(new Raigeki(cardInfo[1], cardInfo[2]));
+					default -> throw new UnknownSpellCardException("Unknown Spell card",
 							path, lineNumber, cardInfo[1]);
-
 				}
 
 			}
@@ -293,29 +270,10 @@ public class Deck {
 
 	}
 
-	public ArrayList<Card> drawNCards(int n) {
-
-		ArrayList<Card> cards = new ArrayList<Card>(n);
-
-		for (int i = 0; i < n; i++)
-			cards.add(deck.remove(0));
-
-		return (cards);
-
-	}
-
 	public Card drawOneCard() {
 
 		return (deck.remove(0));
 
-	}
-
-	public static ArrayList<Card> getMonsters() {
-		return monsters;
-	}
-
-	public static void setMonsters(ArrayList<Card> monsters) {
-		Deck.monsters = monsters;
 	}
 
 	public static ArrayList<Card> getSpells() {
