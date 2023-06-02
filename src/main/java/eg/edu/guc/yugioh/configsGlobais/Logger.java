@@ -6,7 +6,7 @@ public class Logger {
 
     private static final ch.qos.logback.classic.Logger logger = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger("");
 
-    public static ch.qos.logback.classic.Logger startLogs() {
+    public static ch.qos.logback.classic.Logger logs() {
 
         return logger;
 

@@ -14,6 +14,7 @@ import eg.edu.guc.yugioh.cards.spells.MonsterReborn;
 import eg.edu.guc.yugioh.cards.spells.PotOfGreed;
 import eg.edu.guc.yugioh.cards.spells.Raigeki;
 import eg.edu.guc.yugioh.cards.spells.SpellCard;
+import eg.edu.guc.yugioh.configsGlobais.Logger;
 import eg.edu.guc.yugioh.exceptions.EmptyFieldException;
 import eg.edu.guc.yugioh.exceptions.MissingFieldException;
 import eg.edu.guc.yugioh.exceptions.UnexpectedFormatException;
@@ -118,6 +119,8 @@ public class Deck {
 	private static void handleLoadFieldException(BufferedReader br, String message, String path, int lineNumber)
 			throws IOException, MissingFieldException {
 
+		Logger.logs().error("Deck - handleLoadFieldException: " + message + "lineNumber " + lineNumber );
+
 		br.close();
 		throw new MissingFieldException(message, path, lineNumber);
 
@@ -125,6 +128,8 @@ public class Deck {
 
 	public ArrayList<Card> loadCardsFromFile(String path) throws IOException,
 			UnexpectedFormatException {
+
+		Logger.logs().info("Deck - loadCardsFromFile path: " + path );
 
 		ArrayList<Card> temp = new ArrayList<Card>();
 
@@ -228,6 +233,8 @@ public class Deck {
 	}
 
 	private void buildDeck(ArrayList<Card> Monsters, ArrayList<Card> Spells) {
+
+		Logger.logs().info("Deck - buildDeck monstersSize: " + Monsters.size() + " " + "spellsSize: " + Spells.size() );
 
 		int monstersQouta = 15;
 		int spellsQouta = 5;
@@ -361,11 +368,13 @@ public class Deck {
 
 	}
 
-	public ArrayList<Card> drawNCards(int n) {
+	public ArrayList<Card> drawNCards(int quantidade) {
 
-		ArrayList<Card> cards = new ArrayList<Card>(n);
+		Logger.logs().info("Deck - drawNCards quantidade: " + quantidade );
 
-		for (int i = 0; i < n; i++)
+		ArrayList<Card> cards = new ArrayList<Card>(quantidade);
+
+		for (int i = 0; i < quantidade; i++)
 			cards.add(deck.remove(0));
 
 		return (cards);
@@ -373,6 +382,8 @@ public class Deck {
 	}
 
 	public Card drawOneCard() {
+
+		Logger.logs().info("Deck - drawOneCard" );
 
 		return (deck.remove(0));
 

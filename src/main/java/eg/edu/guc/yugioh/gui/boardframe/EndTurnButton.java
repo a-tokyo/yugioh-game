@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
 import eg.edu.guc.yugioh.cards.Card;
+import eg.edu.guc.yugioh.configsGlobais.Logger;
 import eg.edu.guc.yugioh.gui.GUI;
 
 @SuppressWarnings("serial")
@@ -25,6 +26,9 @@ public class EndTurnButton extends JButton implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
+
+		Logger.logs().info("EndTurnButton - actionPerformed");
+
 		Card.getBoard().getActivePlayer().endTurn();
 		GUI.getBoardFrame().getFieldPanel().getActivePlayerPanel().getPlayerNamePanel().updateAll();
 		GUI.getBoardFrame().getFieldPanel().getOpponentPlayerPanel().getPlayerNamePanel().updateAll();

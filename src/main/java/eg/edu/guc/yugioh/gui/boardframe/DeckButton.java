@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
 import eg.edu.guc.yugioh.cards.Card;
+import eg.edu.guc.yugioh.configsGlobais.Logger;
 
 @SuppressWarnings("serial")
 public class DeckButton extends JButton {
@@ -26,6 +27,9 @@ public class DeckButton extends JButton {
 	}
 
 	public void updateDeck(){
+
+		Logger.logs().info("DeckButton - updateDeck active: " + active);
+
 		if(active)
 			setText(""+Card.getBoard().getActivePlayer().getField().getDeck().getDeck().size());
 		else 

@@ -7,6 +7,7 @@ import eg.edu.guc.yugioh.cards.Card;
 import eg.edu.guc.yugioh.cards.Mode;
 import eg.edu.guc.yugioh.cards.MonsterCard;
 import eg.edu.guc.yugioh.cards.spells.SpellCard;
+import eg.edu.guc.yugioh.configsGlobais.Logger;
 import eg.edu.guc.yugioh.exceptions.IllegalSpellTargetException;
 import eg.edu.guc.yugioh.exceptions.MultipleMonsterAdditionException;
 import eg.edu.guc.yugioh.exceptions.UnexpectedFormatException;
@@ -29,6 +30,8 @@ public class Player implements Duelist {
 
 	@Override
 	public boolean summonMonster(MonsterCard monster) {
+
+		Logger.logs().info("Player - summonMonster monster name: " + monster.getName() );
 
 		if (Card.getBoard().isGameOver())
 			return false;
@@ -55,6 +58,8 @@ public class Player implements Duelist {
 	public boolean summonMonster(MonsterCard monster,
 			ArrayList<MonsterCard> sacrifices) {
 
+		Logger.logs().info("Player - summonMonster monster name: " + monster.getName() + "sacrifices: " + sacrifices.size());
+
 		if (Card.getBoard().isGameOver())
 			return false;
 
@@ -78,6 +83,8 @@ public class Player implements Duelist {
 
 	@Override
 	public boolean setMonster(MonsterCard monster) {
+
+		Logger.logs().info("Player - setMonster monster name: " + monster.getName() );
 
 		if (Card.getBoard().isGameOver())
 			return false;
@@ -104,6 +111,8 @@ public class Player implements Duelist {
 	public boolean setMonster(MonsterCard monster,
 			ArrayList<MonsterCard> sacrifices) {
 
+		Logger.logs().info("Player - setMonster monster name: " + monster.getName() + " " + "sacrifices: " + sacrifices.size());
+
 		if (Card.getBoard().isGameOver())
 			return false;
 
@@ -128,6 +137,8 @@ public class Player implements Duelist {
 	@Override
 	public boolean setSpell(SpellCard spell) throws IllegalSpellTargetException {
 
+		Logger.logs().info("Player - setSpell spell name: " + spell.getName() );
+
 		if (Card.getBoard().isGameOver())
 			return false;
 
@@ -142,6 +153,8 @@ public class Player implements Duelist {
 
 	@Override
 	public boolean activateSpell(SpellCard spell, MonsterCard monster) throws IllegalSpellTargetException {
+
+		Logger.logs().info("Player - activateSpell spell name: " + spell.getName() + " " + "monster: " + monster );
 
 		if (Card.getBoard().isGameOver())
 			return false;
@@ -163,6 +176,8 @@ public class Player implements Duelist {
 	@Override
 	public boolean declareAttack(MonsterCard monster) {
 
+		Logger.logs().info("Player - declareAttack monster name: " + monster.getName() );
+
 		if (Card.getBoard().isGameOver())
 			return false;
 
@@ -178,6 +193,8 @@ public class Player implements Duelist {
 	@Override
 	public boolean declareAttack(MonsterCard activeMonster,
 			MonsterCard opponentMonster) {
+
+		Logger.logs().info("Player - declareAttack activeMonster name: " + activeMonster.getName() + " " + "opponentMonster name: " + opponentMonster.getName() );
 
 		if (Card.getBoard().isGameOver())
 			return false;
@@ -223,6 +240,8 @@ public class Player implements Duelist {
 
 	@Override
 	public boolean switchMonsterMode(MonsterCard monster) {
+
+		Logger.logs().info("Player - switchMonsterMode monster name: " + monster.getName() );
 
 		if (Card.getBoard().isGameOver())
 			return false;

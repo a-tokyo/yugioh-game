@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import eg.edu.guc.yugioh.cards.Card;
 import eg.edu.guc.yugioh.cards.Mode;
 import eg.edu.guc.yugioh.cards.MonsterCard;
+import eg.edu.guc.yugioh.configsGlobais.Logger;
 
 @SuppressWarnings("serial")
 public class MonstersGrid extends JPanel {
@@ -28,6 +29,9 @@ public class MonstersGrid extends JPanel {
 	}
 	
 	public void updateMonstersArea() {
+
+		Logger.logs().info("MonstersGrid - updateMonstersArea active: " + active);
+
 		removeAll();
 		if(active){
 			monstersArea = Card.getBoard().getActivePlayer().getField().getMonstersArea();

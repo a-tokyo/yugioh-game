@@ -11,7 +11,7 @@ public class Main {
 
 	public static void startNewGame(){
 
-		Logger.startLogs().info("Main - startNewGame");
+		Logger.logs().info("Main - startNewGame");
 
 		Board b = new Board();
 		GUI g = new GUI();

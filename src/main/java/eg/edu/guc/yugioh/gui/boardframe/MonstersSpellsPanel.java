@@ -1,4 +1,6 @@
 package eg.edu.guc.yugioh.gui.boardframe;
+import eg.edu.guc.yugioh.configsGlobais.Logger;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
@@ -28,6 +30,9 @@ public class MonstersSpellsPanel extends JPanel{
 	}
 	
 	public void updateFieldCards(){
+
+		Logger.logs().info("MonstersSpellsPanel - updateFieldCards");
+
 		monstersGrid.updateMonstersArea();
 		spellsGrid.updateSpellsArea();
 	}
