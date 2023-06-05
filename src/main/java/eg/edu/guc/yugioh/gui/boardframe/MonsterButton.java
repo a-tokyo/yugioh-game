@@ -30,7 +30,9 @@ public class MonsterButton extends CardButton implements ActionListener{
 			setIcon(icon);
 		}
 		this.monster = monster;
-		setToolTipText(monster.getName()+"\n ATK: "+monster.getAttackPoints()+"\n DEF: "+monster.getDefensePoints()+"\n Level: "+monster.getLevel());
+		String monsterInfo = String.format("<html>%s<br>ATK: %d<br>DEF: %d<br>Level: %d</html>", monster.getName(), monster.getAttackPoints(), monster.getDefensePoints(), monster.getLevel());
+		setToolTipText(monsterInfo);
+		//setToolTipText("<html>"+monster.getName()+"<br>ATK: "+monster.getAttackPoints()+"<br>DEF: "+monster.getDefensePoints()+"<br>Level: "+monster.getLevel()+"</html>");
 		addActionListener(this);
 		validate();
 	}
