@@ -11,7 +11,7 @@ import javax.swing.SwingConstants;
 
 import eg.edu.guc.yugioh.cards.Card;
 import eg.edu.guc.yugioh.gui.GUI;
-//import eg.edu.guc.yugioh.gui.otherframes.PlayerSwitch;
+import eg.edu.guc.yugioh.gui.otherframes.PlayerSwitch;
 
 @SuppressWarnings("serial")
 public class EndTurnButton extends JButton implements ActionListener{
@@ -26,12 +26,12 @@ public class EndTurnButton extends JButton implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
-		//PlayerSwitch ps = new PlayerSwitch();
+		PlayerSwitch ps = new PlayerSwitch();
 		Card.getBoard().getActivePlayer().endTurn();
 		GUI.getBoardFrame().getFieldPanel().getActivePlayerPanel().getPlayerNamePanel().updateAll();
 		GUI.getBoardFrame().getFieldPanel().getOpponentPlayerPanel().getPlayerNamePanel().updateAll();
 		// Do the PlayerSwitch frame appear here
-		//ps.askForSwitching();
+		ps.askForSwitching();
 
 		GUI.getBoardFrame().getWestImagesPanel().swap();
 		// PlayerSwitch frame appears here

@@ -1,52 +1,48 @@
 package eg.edu.guc.yugioh.gui.otherframes;
 
+import eg.edu.guc.yugioh.gui.GUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Container;
 
-public class PlayerSwitch extends JFrame implements ActionListener {
+public class PlayerSwitch extends JFrame {
     JPanel switchPanel = new JPanel();
-    JButton switchButton = new JButton("Swapped done!");
-    JLabel switchMsg = new JLabel(new ImageIcon("images/Switch Logo.jpg"));
+    JLabel switchMsg = new JLabel(new ImageIcon("images/Switch Logo 2.jpg"));
     boolean hasSwapped = false;
 
     public PlayerSwitch() {
         super("Player switching...");
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(926,678);
-        setLocation(dim.width/8-this.getSize().width/8, dim.height/8-this.getSize().height/8);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null);
+        setSize(1367, 796);
+
+        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         setVisible(false);
         setResizable(false);
-        setContentPane(switchMsg);
 
-        switchButton.addActionListener(this);
-        switchPanel.setLayout(new GridLayout(0, 1));
-        //add(switchPanel, BorderLayout.CENTER);
-        switchPanel.setVisible(true);
-        switchPanel.add(switchButton);
+        setLayout(new GridLayout(0, 1));
+        add(switchMsg);
 
-        add(switchPanel);
+
         validate();
     }
 
     public void askForSwitching() {
+
+        int align_x = GUI.getBoardFrame().getX();
+        int align_y = GUI.getBoardFrame().getY();
+
+        setLocation(align_x, align_y + 10);
+
         if(!hasSwapped) {
             setVisible(true);
             hasSwapped = true;
-
-            for(int i=0; i<50000; i+=1) {}
-
-            setVisible(false);
         }
         else {
             setVisible(false);
         }
     }
 
-    public void actionPerformed(ActionEvent e) {
-        //askForSwitching();
-    }
 }
