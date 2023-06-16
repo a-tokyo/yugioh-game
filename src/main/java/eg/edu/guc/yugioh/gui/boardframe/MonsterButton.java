@@ -10,6 +10,7 @@ import eg.edu.guc.yugioh.board.player.Phase;
 import eg.edu.guc.yugioh.cards.Card;
 import eg.edu.guc.yugioh.cards.Location;
 import eg.edu.guc.yugioh.cards.MonsterCard;
+import eg.edu.guc.yugioh.configsGlobais.Logger;
 import eg.edu.guc.yugioh.exceptions.IllegalSpellTargetException;
 import eg.edu.guc.yugioh.exceptions.WrongPhaseException;
 import eg.edu.guc.yugioh.gui.GUI;
@@ -41,6 +42,9 @@ public class MonsterButton extends CardButton implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+
+		Logger.logs().info("MonsterButton - actionPerformed ");
+
 		if(monster.getLocation() == Location.FIELD){
 			if(Card.getBoard().getActivePlayer().getField().getPhase()==Phase.BATTLE){
 				battlePhaseActions();
@@ -58,6 +62,7 @@ public class MonsterButton extends CardButton implements ActionListener{
 			}
 			GUI.getBoardFrame().updateBoardFrame();
 		}
+
 		if(monster.getLocation()==Location.HAND && Card.getBoard().getActivePlayer().getField().getHand().contains(monster)){ // condition added
 			new HandOptionsFrame(true,monster);
 		}

@@ -14,6 +14,7 @@ import eg.edu.guc.yugioh.cards.MonsterCard;
 import eg.edu.guc.yugioh.cards.spells.ChangeOfHeart;
 import eg.edu.guc.yugioh.cards.spells.MagePower;
 import eg.edu.guc.yugioh.cards.spells.SpellCard;
+import eg.edu.guc.yugioh.configsGlobais.Logger;
 import eg.edu.guc.yugioh.gui.GUI;
 
 @SuppressWarnings("serial")
@@ -105,6 +106,9 @@ public class HandOptionsFrame extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
+		Logger.logs().info("HandOptionsFrame - actionPerformed getActionCommand: " + e.getActionCommand());
+
 		if(e.getActionCommand().equals("Cancel")){
 			GUI.getBoardFrame().resetHandlers();
 		}else
@@ -118,6 +122,7 @@ public class HandOptionsFrame extends JFrame implements ActionListener{
 						GUI.getBoardFrame().setMonsterToSummon(null);
 						GUI.getBoardFrame().setSpellToActivate(null);
 					} catch (Exception e1) {
+						Logger.logs().error("HandOptionsFrame - actionPerformed Exception: " + e1);
 						GUI.errorFrame(e1);
 					}
 				}else
@@ -127,7 +132,13 @@ public class HandOptionsFrame extends JFrame implements ActionListener{
 	}
 
 	private void activateSpellCard() {
-		if((spell instanceof ChangeOfHeart || spell instanceof MagePower)){
+
+		boolean isInstanceChangeOfHeart = spell instanceof ChangeOfHeart;
+		boolean isInstanceMagePower = spell instanceof MagePower;
+
+		Logger.logs().info("HandOptionsFrame - activateSpellCard isInstanceChangeOfHeart " + isInstanceChangeOfHeart + " " + "isInstanceMagePower " + isInstanceMagePower);
+
+		if(isInstanceChangeOfHeart || isInstanceMagePower){
 			new ConfirmFrame("Please click a monster to activate on");
 			GUI.getBoardFrame().setSpellToActivate(spell);
 			GUI.getBoardFrame().setMonsterToSummon(null);
@@ -137,11 +148,15 @@ public class HandOptionsFrame extends JFrame implements ActionListener{
 				GUI.getBoardFrame().setMonsterToSummon(null);
 				GUI.getBoardFrame().setSpellToActivate(null);
 			} catch (Exception e) {
+				Logger.logs().error("HandOptionsFrame - activateSpellCard Exception: " + e);
 				GUI.errorFrame(e);
 			}
 		}
 	}
 	private void monsterOptions(ActionEvent e){
+
+		Logger.logs().info("HandOptionsFrame - monsterOptions getActionCommand: " + e.getActionCommand());
+
 		try{
 			if(e.getActionCommand().equals("Summon Monster")){
 				if(monster.getLevel()<5){
@@ -153,8 +168,14 @@ public class HandOptionsFrame extends JFrame implements ActionListener{
 				}
 				GUI.getBoardFrame().setSpellToActivate(null);
 			}
+
 			if(e.getActionCommand().equals("Set Monster")){
-				if(monster.getLevel()<5){
+
+				int monsterLevel = monster.getLevel();
+
+				Logger.logs().info("HandOptionsFrame - monsterOptions monsterLevel: " + monsterLevel);
+
+				if(monsterLevel<5){
 					Card.getBoard().getActivePlayer().setMonster(monster);
 					GUI.getBoardFrame().setMonsterToSummon(null);
 				}else {
@@ -164,20 +185,35 @@ public class HandOptionsFrame extends JFrame implements ActionListener{
 			}
 			
 		}catch(Exception e1){
+			Logger.logs().error("HandOptionsFrame - monsterOptions Exception: " + e1);
 			GUI.errorFrame(e1);
+
 		}
 	}
 	private void ritualSummon(boolean isAttackMode) {
-		if(monster.getLevel()<7)
+
+		int monsterLevel = monster.getLevel();
+
+		Logger.logs().info("HandOptionsFrame - ritualSummon monsterLevel: " + monsterLevel);
+
+		if( monsterLevel < 7)
 			GUI.getBoardFrame().setSacrificesCount(1);
 		else 
 			GUI.getBoardFrame().setSacrificesCount(2);
+
 		if(Card.getBoard().getActivePlayer().getField().getMonstersArea().size()>=GUI.getBoardFrame().getSacrificesCount()){
+
+			Logger.logs().info("HandOptionsFrame - ritualSummon monster: " + monster);
+
 			new ConfirmFrame("Please click "+GUI.getBoardFrame().getSacrificesCount()+" monster(s) to sacrifice");
 			GUI.getBoardFrame().setMonsterToSummon(monster);
 			GUI.getBoardFrame().setSacrificeAttack(isAttackMode);
 		}else{
-			GUI.errorFrame(new Exception("You don't have enough sacrifices."));
+
+			String message = "You don't have enough sacrifices.";
+
+			Logger.logs().error("HandOptionsFrame - ritualSummon message: " + message);
+			GUI.errorFrame(new Exception(message));
 		}
 	}
 }

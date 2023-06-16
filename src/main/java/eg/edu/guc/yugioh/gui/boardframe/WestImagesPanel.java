@@ -1,5 +1,7 @@
 package eg.edu.guc.yugioh.gui.boardframe;
 
+import eg.edu.guc.yugioh.configsGlobais.Logger;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
@@ -29,6 +31,9 @@ public class WestImagesPanel extends JPanel {
 	}
 	
 	public void swap(){
+
+		Logger.logs().info("WestImagesPanel - swap swapped: " + swapped);
+
 		remove(activeImage);
 		remove(opponentImage);
 		if(!swapped){
