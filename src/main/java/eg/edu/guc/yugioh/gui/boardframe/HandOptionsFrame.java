@@ -1,14 +1,13 @@
 package eg.edu.guc.yugioh.gui.boardframe;
 
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Toolkit;
+oesimport java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JTextArea;
+import javax.swing.border.EmptyBorder;
 
 import eg.edu.guc.yugioh.cards.Card;
 import eg.edu.guc.yugioh.cards.MonsterCard;
@@ -25,39 +24,80 @@ public class HandOptionsFrame extends JFrame implements ActionListener{
 	JButton cancelButton = new JButton ("Cancel");
 	SpellCard spell;
 	MonsterCard monster;
+	JTextArea cardName = new JTextArea("");
+	JTextArea cardDescription = new JTextArea("");
+
+	private void ConfigTextArea(JTextArea textArea) {
+		textArea.setEditable(false);
+		textArea.setFocusable(false);
+		textArea.setBackground(Color.LIGHT_GRAY);
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
+
+		int padding = 10; // Adjust the padding value as needed
+		textArea.setBorder(new EmptyBorder(padding, padding, padding, padding));
+
+
+	}
+
+
 	public HandOptionsFrame(boolean isMonsterOptions , Card card){
 		super("Choose Action");
-		if(!isMonsterOptions){
+		if (!isMonsterOptions) {
 			spell = (SpellCard)card;
+
 			leftButton.setText("Activate Spell");
 			rightButton.setText("Set Spell");
-		}
-		else
+		} else {
 			monster = (MonsterCard)card;
+		}
+
+		ConfigTextArea(cardName);
+		cardName.setText(card.getName());
+		cardName.setFont(cardName.getFont().deriveFont(Font.BOLD));
+
+		ConfigTextArea(cardDescription);
+		cardDescription.setText(card.getDescription());
 		constructFrame();
 	}
 
 	private void constructFrame() {
 		setVisible(true);
 		setLayout(new GridBagLayout());
-		setSize(300,150);
+		setSize(450,200);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+
 		GridBagConstraints c = new GridBagConstraints();
-		c.anchor = GridBagConstraints.CENTER;
-		c.insets.top = 10;
-		c.insets.right = 5;
-		c.gridy = 0;
-		add(leftButton , c);
-		c.gridx =1;
-		c.insets.right = 0;
-		c.ipadx = 25;
-		add(rightButton , c);
+
+		c.anchor = GridBagConstraints.WEST;
+
 		c.gridx = 0;
-		c.ipadx = 0;
-		c.gridy =1 ;
-		c.gridwidth =2;
+		c.gridy = 0;
+		c.gridwidth = 3;
+		c.fill = 1;
+		add(cardName, c);
+
+		c.gridx = 0;
+		c.gridy = 1;
+		c.insets.top = 10;
+		c.insets.bottom = 10;
+		add(cardDescription, c);
+
+		c.gridwidth = 1;
+		c.fill = 0;
+
+		c.insets.right = 5;
+		c.gridx = 0;
+		c.gridy = 2;
+		add(leftButton , c);
+
+		c.gridx = 1;
+		add(rightButton , c);
+
+		c.gridx = 2;
 		add(cancelButton , c);
+
 		leftButton.addActionListener(this);
 		rightButton.addActionListener(this);
 		cancelButton.addActionListener(this);
