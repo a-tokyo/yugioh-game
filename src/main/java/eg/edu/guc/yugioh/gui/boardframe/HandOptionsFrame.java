@@ -40,7 +40,7 @@ public class HandOptionsFrame extends JFrame implements ActionListener{
 	private void constructFrame() {
 		setVisible(true);
 		setLayout(new GridBagLayout());
-		setSize(300,150);
+		setSize(350,200);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 		GridBagConstraints c = new GridBagConstraints();
@@ -51,7 +51,7 @@ public class HandOptionsFrame extends JFrame implements ActionListener{
 		add(leftButton , c);
 		c.gridx =1;
 		c.insets.right = 0;
-		c.ipadx = 25;
+		c.ipadx = 40;
 		add(rightButton , c);
 		c.gridx = 0;
 		c.ipadx = 0;

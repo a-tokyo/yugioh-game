@@ -19,7 +19,7 @@ public class EndTurnButton extends JButton implements ActionListener{
 		super("End Turn",new ImageIcon("images/EndTurn.jpg"));
 		setPreferredSize(new Dimension(300,165));
 		setHorizontalTextPosition(SwingConstants.CENTER);
-		setFont(new Font("", Font.ITALIC, 18));
+		setFont(new Font("", Font.ITALIC| Font.BOLD, 40));
 		setForeground(java.awt.Color.WHITE);
 		addActionListener(this);
 	}
@@ -28,6 +28,7 @@ public class EndTurnButton extends JButton implements ActionListener{
 		Card.getBoard().getActivePlayer().endTurn();
 		GUI.getBoardFrame().getFieldPanel().getActivePlayerPanel().getPlayerNamePanel().updateAll();
 		GUI.getBoardFrame().getFieldPanel().getOpponentPlayerPanel().getPlayerNamePanel().updateAll();
+		GUI.getBoardFrame().getCurrentCountPhase().updateCount();
 		GUI.getBoardFrame().getWestImagesPanel().swap();
 		GUI.getBoardFrame().updateBoardFrame();
 		GUI.getBoardFrame().resetHandlers(); // added

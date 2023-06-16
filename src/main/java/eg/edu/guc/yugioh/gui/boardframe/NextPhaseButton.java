@@ -20,7 +20,7 @@ public class NextPhaseButton extends JButton implements ActionListener{
 		super("Next Phase", new ImageIcon("images/NextPhase.jpg"));
 		setPreferredSize(new Dimension(300,165));
 		setHorizontalTextPosition(SwingConstants.CENTER);
-		setFont(new Font("", Font.ITALIC, 18));
+		setFont(new Font("", Font.ITALIC | Font.BOLD, 40));
 		setForeground(java.awt.Color.WHITE);
 		addActionListener(this);
 	}
