@@ -33,7 +33,7 @@ public class BoardFrame extends JFrame implements ActionListener{
 	private ArrayList<MonsterCard> sacrificedMonsters = new ArrayList<MonsterCard>();
 	private int sacrificesCount;
 	private MonsterCard monsterToSummon;
-	
+	private CountPhase CountPhase;
 	public BoardFrame(){
 		super("Yu-Gi-Oh!");
 		setFramePrefrences();
@@ -60,6 +60,7 @@ public class BoardFrame extends JFrame implements ActionListener{
 		opponentHandPanel.setPreferredSize(new Dimension(activeHandPanel.getPreferredSize().width,15));
 		westImagesPanel = new WestImagesPanel();
 		eastButtonsPanel =new EastButtonsPanel();
+		CountPhase = new CountPhase(1);
 	}
 
 	private void addPanels(){
@@ -72,7 +73,8 @@ public class BoardFrame extends JFrame implements ActionListener{
 		dataPanel.add(fieldPanel, BorderLayout.CENTER);
 		dataPanel.add(activeHandPanel,BorderLayout.SOUTH);
 		dataPanel.add(eastButtonsPanel,BorderLayout.EAST);
-		dataPanel.add(westImagesPanel,BorderLayout.WEST);
+		//dataPanel.add(westImagesPanel,BorderLayout.WEST);
+		dataPanel.add(CountPhase,BorderLayout.WEST);
 		add(dataPanel);
 	}
 	
@@ -213,5 +215,9 @@ public class BoardFrame extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		this.toBack();
+	}
+
+	public CountPhase getCurrentCountPhase() {
+		return CountPhase;
 	}
 }

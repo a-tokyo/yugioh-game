@@ -92,6 +92,9 @@ public class HandOptionsFrame extends JFrame implements ActionListener{
 		c.gridx = 0;
 		c.gridy = 2;
 		add(leftButton , c);
+		c.gridx =1;
+		c.insets.right = 0;
+		c.ipadx = 40;
 
 		c.gridx = 1;
 		add(rightButton , c);

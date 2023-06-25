@@ -19,7 +19,7 @@ public class DeckButton extends JButton {
 		super(deck);
 		this.active = active;
 		setHorizontalTextPosition(SwingConstants.CENTER);
-		setFont(new Font("", Font.ITALIC, 18));
+		setFont(new Font("", Font.ITALIC | Font.BOLD, 40));
 		setForeground(java.awt.Color.WHITE);
 		setPreferredSize(new Dimension(CardButton.getDimension('W'),150));
 		updateDeck();
