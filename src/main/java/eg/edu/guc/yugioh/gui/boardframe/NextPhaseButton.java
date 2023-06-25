@@ -11,6 +11,7 @@ import javax.swing.SwingConstants;
 
 import eg.edu.guc.yugioh.board.player.Phase;
 import eg.edu.guc.yugioh.cards.Card;
+import eg.edu.guc.yugioh.configsGlobais.Logger;
 import eg.edu.guc.yugioh.gui.GUI;
 
 @SuppressWarnings("serial")
@@ -25,6 +26,9 @@ public class NextPhaseButton extends JButton implements ActionListener{
 		addActionListener(this);
 	}
 	public void actionPerformed(ActionEvent e) {
+
+		Logger.logs().info("NextPhaseButton - actionPerformed actionCommand: " + e.getActionCommand());
+
 		if(Card.getBoard().getActivePlayer().getField().getPhase().equals(Phase.MAIN2))
 			GUI.getBoardFrame().getEastButtonsPanel().getEndTurnButton().doClick();
 		else{

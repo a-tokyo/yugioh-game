@@ -1,5 +1,7 @@
 package eg.edu.guc.yugioh.gui.boardframe;
 
+import eg.edu.guc.yugioh.configsGlobais.Logger;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
@@ -14,6 +16,9 @@ public class DeckGraveyard extends JPanel {
 		setLayout(new BorderLayout());
 		graveyard = new GraveyardButton(active);
 		deck = new DeckButton(active);
+
+		Logger.logs().info("DeckGraveyard - DeckGraveyard active: " + active);
+
 		if(!active){
 			add(graveyard, BorderLayout.SOUTH);
 			add(deck, BorderLayout.NORTH);
