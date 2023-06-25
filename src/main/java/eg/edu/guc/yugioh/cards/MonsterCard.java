@@ -41,9 +41,7 @@ public class MonsterCard extends Card {
 
 	public void attackLifePoints() {
 
-		int lp = getBoard().getOpponentPlayer().getLifePoints();
-		getBoard().getOpponentPlayer().setLifePoints(
-				lp - this.getAttackPoints());
+		getBoard().getOpponentPlayer().takeDamage(this.getAttackPoints());
 
 	}
 
@@ -58,8 +56,7 @@ public class MonsterCard extends Card {
 
 				int damage = this.getAttackPoints() - target.getAttackPoints();
 				opponent.getField().removeMonsterToGraveyard(target);
-				int lp = opponent.getLifePoints();
-				opponent.setLifePoints(lp - damage);
+				opponent.takeDamage(damage);
 
 			} else if (this.getAttackPoints() == target.getAttackPoints()) {
 
@@ -71,8 +68,7 @@ public class MonsterCard extends Card {
 
 				int damage = target.getAttackPoints() - this.getAttackPoints();
 				active.getField().removeMonsterToGraveyard(this);
-				int lp = active.getLifePoints();
-				active.setLifePoints(lp - damage);
+				active.takeDamage(damage);
 
 			}
 
@@ -91,8 +87,7 @@ public class MonsterCard extends Card {
 			} else {
 
 				int damage = target.getDefensePoints() - this.getAttackPoints();
-				int lp = active.getLifePoints();
-				active.setLifePoints(lp - damage);
+				active.takeDamage(damage);
 				this.setHidden(true);
 
 			}
