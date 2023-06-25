@@ -1,6 +1,7 @@
 package eg.edu.guc.yugioh.cards;
 
 import eg.edu.guc.yugioh.board.player.Player;
+import eg.edu.guc.yugioh.configsGlobais.Logger;
 
 public class MonsterCard extends Card {
 
@@ -41,11 +42,15 @@ public class MonsterCard extends Card {
 
 	public void attackLifePoints() {
 
+		Logger.logs().info("MonsterCard - attackLifePoints" );
+
 		getBoard().getOpponentPlayer().takeDamage(this.getAttackPoints());
 
 	}
 
 	public void attackMonster(MonsterCard target) {
+
+		Logger.logs().info("Player - attackMonster Target: " + target );
 
 		Player active = getBoard().getActivePlayer();
 		Player opponent = getBoard().getOpponentPlayer();
