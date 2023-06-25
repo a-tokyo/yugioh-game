@@ -1,6 +1,7 @@
 package eg.edu.guc.yugioh.cards;
 
 import eg.edu.guc.yugioh.board.player.Player;
+import eg.edu.guc.yugioh.configsGlobais.Logger;
 
 public class MonsterCard extends Card {
 
@@ -41,13 +42,15 @@ public class MonsterCard extends Card {
 
 	public void attackLifePoints() {
 
-		int lp = getBoard().getOpponentPlayer().getLifePoints();
-		getBoard().getOpponentPlayer().setLifePoints(
-				lp - this.getAttackPoints());
+		Logger.logs().info("MonsterCard - attackLifePoints" );
+
+		getBoard().getOpponentPlayer().takeDamage(this.getAttackPoints());
 
 	}
 
 	public void attackMonster(MonsterCard target) {
+
+		Logger.logs().info("Player - attackMonster Target: " + target );
 
 		Player active = getBoard().getActivePlayer();
 		Player opponent = getBoard().getOpponentPlayer();
@@ -58,8 +61,7 @@ public class MonsterCard extends Card {
 
 				int damage = this.getAttackPoints() - target.getAttackPoints();
 				opponent.getField().removeMonsterToGraveyard(target);
-				int lp = opponent.getLifePoints();
-				opponent.setLifePoints(lp - damage);
+				opponent.takeDamage(damage);
 
 			} else if (this.getAttackPoints() == target.getAttackPoints()) {
 
@@ -71,8 +73,7 @@ public class MonsterCard extends Card {
 
 				int damage = target.getAttackPoints() - this.getAttackPoints();
 				active.getField().removeMonsterToGraveyard(this);
-				int lp = active.getLifePoints();
-				active.setLifePoints(lp - damage);
+				active.takeDamage(damage);
 
 			}
 
@@ -91,8 +92,7 @@ public class MonsterCard extends Card {
 			} else {
 
 				int damage = target.getDefensePoints() - this.getAttackPoints();
-				int lp = active.getLifePoints();
-				active.setLifePoints(lp - damage);
+				active.takeDamage(damage);
 				this.setHidden(true);
 
 			}

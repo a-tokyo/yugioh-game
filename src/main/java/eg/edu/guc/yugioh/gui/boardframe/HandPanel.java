@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 
 import eg.edu.guc.yugioh.cards.*;
 import eg.edu.guc.yugioh.cards.spells.SpellCard;
+import eg.edu.guc.yugioh.configsGlobais.Logger;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -25,6 +26,9 @@ public class HandPanel extends JPanel {
 	}
 
 	public void updateHand() {
+
+		Logger.logs().info("HandPanel - updateHand active: " + active);
+
 		removeAll();
 		handList = new ArrayList<CardButton>();
 		if(active){
