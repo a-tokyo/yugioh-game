@@ -10,8 +10,8 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
 import eg.edu.guc.yugioh.cards.Card;
-import eg.edu.guc.yugioh.configsGlobais.Logger;
 import eg.edu.guc.yugioh.gui.GUI;
+import eg.edu.guc.yugioh.gui.otherframes.PlayerSwitch;
 
 @SuppressWarnings("serial")
 public class EndTurnButton extends JButton implements ActionListener{
@@ -26,13 +26,15 @@ public class EndTurnButton extends JButton implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
-
-		Logger.logs().info("EndTurnButton - actionPerformed");
-
+		PlayerSwitch ps = new PlayerSwitch();
 		Card.getBoard().getActivePlayer().endTurn();
 		GUI.getBoardFrame().getFieldPanel().getActivePlayerPanel().getPlayerNamePanel().updateAll();
 		GUI.getBoardFrame().getFieldPanel().getOpponentPlayerPanel().getPlayerNamePanel().updateAll();
+		// Do the PlayerSwitch frame appear here
+		ps.askForSwitching();
+
 		GUI.getBoardFrame().getWestImagesPanel().swap();
+		// PlayerSwitch frame appears here
 		GUI.getBoardFrame().updateBoardFrame();
 		GUI.getBoardFrame().resetHandlers(); // added
 		GUI.getBoardFrame().getActiveHandPanel().repaint();

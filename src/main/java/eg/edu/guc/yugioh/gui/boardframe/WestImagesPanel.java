@@ -1,12 +1,11 @@
 package eg.edu.guc.yugioh.gui.boardframe;
 
-import eg.edu.guc.yugioh.configsGlobais.Logger;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import eg.edu.guc.yugioh.gui.otherframes.PlayerSwitch;
 
 @SuppressWarnings("serial")
 public class WestImagesPanel extends JPanel {
@@ -14,7 +13,9 @@ public class WestImagesPanel extends JPanel {
 	private JLabel opponentImage = new JLabel(new ImageIcon("images/KaibaDuel.jpg"));
 	Dimension dimension = new Dimension(300,760-15-new CardButton().getPreferredSize().height);
 	boolean swapped = false;
-	
+	//PlayerSwitch ps = new PlayerSwitch();
+
+
 	public WestImagesPanel() {
 		setLayout(new BorderLayout());
 		activeImage.setPreferredSize(new Dimension(dimension.width,dimension.height/2-7));
@@ -31,8 +32,7 @@ public class WestImagesPanel extends JPanel {
 	}
 	
 	public void swap(){
-
-		Logger.logs().info("WestImagesPanel - swap swapped: " + swapped);
+		//ps.askForSwitching();
 
 		remove(activeImage);
 		remove(opponentImage);
