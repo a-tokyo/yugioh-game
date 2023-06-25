@@ -14,6 +14,7 @@ import eg.edu.guc.yugioh.cards.spells.MonsterReborn;
 import eg.edu.guc.yugioh.cards.spells.PotOfGreed;
 import eg.edu.guc.yugioh.cards.spells.Raigeki;
 import eg.edu.guc.yugioh.cards.spells.SpellCard;
+import eg.edu.guc.yugioh.configsGlobais.Logger;
 import eg.edu.guc.yugioh.exceptions.EmptyFieldException;
 import eg.edu.guc.yugioh.exceptions.MissingFieldException;
 import eg.edu.guc.yugioh.exceptions.UnexpectedFormatException;
@@ -40,23 +41,19 @@ public class Deck {
 	private final ArrayList<Card> deck;
 	int trials = 0;
 
-	public Deck() throws IOException, NumberFormatException,
-			UnexpectedFormatException {
+	public Deck() throws IOException, NumberFormatException, UnexpectedFormatException {
 
 		if ((monsters == null) || (spells == null)) {
 
 			Scanner sc = new Scanner(System.in);
 
 			while (true) {
-
 				try {
-
 					monsters = loadCardsFromFile(Deck.getMonstersPath());
 					spells = loadCardsFromFile(Deck.getSpellsPath());
 					break;
 
 				} catch (UnexpectedFormatException e) {
-
 					if (trials >= 3) {
 						sc.close();
 						throw e;
@@ -80,7 +77,6 @@ public class Deck {
 					}
 
 				} catch (FileNotFoundException e) {
-
 					if (trials >= 3) {
 						sc.close();
 						throw e;
@@ -99,37 +95,31 @@ public class Deck {
 						Deck.setMonstersPath(path);
 					else
 						Deck.setSpellsPath(path);
-
 				}
-
 			}
-
 			sc.close();
-
 		}
 
 		deck = new ArrayList<Card>();
 		buildDeck(monsters, spells);
 		shuffleDeck();
-
 	}
-
 
 	private static void handleLoadFieldException(BufferedReader br, String message, String path, int lineNumber)
 			throws IOException, MissingFieldException {
 
+		Logger.logs().error("Deck - handleLoadFieldException: " + message + "lineNumber " + lineNumber );
+
 		br.close();
 		throw new MissingFieldException(message, path, lineNumber);
-
 	}
 
-	public ArrayList<Card> loadCardsFromFile(String path) throws IOException,
-			UnexpectedFormatException {
+	public ArrayList<Card> loadCardsFromFile(String path) throws IOException, UnexpectedFormatException {
+
+		Logger.logs().info("Deck - loadCardsFromFile path: " + path );
 
 		ArrayList<Card> temp = new ArrayList<Card>();
-
 		String line;
-
 		BufferedReader br = new BufferedReader(new FileReader(path));
 
 		int lineNumber = 0;
@@ -137,97 +127,58 @@ public class Deck {
 		while ((line = br.readLine()) != null) {
 
 			lineNumber++;
-
 			String[] cardInfo = line.split(",");
 
 			if (cardInfo.length == 0) {
-
 				handleLoadFieldException(br, "No fields available.", path, lineNumber);
-
 			} else if (cardInfo[0].equalsIgnoreCase("Monster") && cardInfo.length != 6) {
-
 				handleLoadFieldException(br, "Monster fields in the line did not match the expected.", path, lineNumber);
-
 			} else if (cardInfo[0].equalsIgnoreCase("Spell") && cardInfo.length != 3) {
-
 				handleLoadFieldException(br, "Spell fields in the line did not match the expected.", path, lineNumber);
-
 			}
 
 			for (int i = 0; i < cardInfo.length; i++)
 				if (cardInfo[i].equals("") || cardInfo[i].equals(" ")) {
-
 					br.close();
 					throw new EmptyFieldException("Empty Field.", path,
 							lineNumber, i + 1);
-
 				}
 
 			if (cardInfo[0].equalsIgnoreCase("Monster")) {
-
 				temp.add(new MonsterCard(cardInfo[1], cardInfo[2], Integer
 						.parseInt(cardInfo[5]), Integer.parseInt(cardInfo[3]),
 						Integer.parseInt(cardInfo[4])));
-
 			} else {
-
 				if (!cardInfo[0].equalsIgnoreCase("Spell")) {
-
 					br.close();
 					throw new UnknownCardTypeException("Unknown Card type.",
 							path, lineNumber, cardInfo[0]);
-
 				}
 
 				switch (cardInfo[1]) {
-
-				case "Card Destruction":
-					temp.add(new CardDestruction(cardInfo[1], cardInfo[2]));
-					break;
-				case "Change Of Heart":
-					temp.add(new ChangeOfHeart(cardInfo[1], cardInfo[2]));
-					break;
-				case "Dark Hole":
-					temp.add(new DarkHole(cardInfo[1], cardInfo[2]));
-					break;
-				case "Graceful Dice":
-					temp.add(new GracefulDice(cardInfo[1], cardInfo[2]));
-					break;
-				case "Harpie's Feather Duster":
-					temp.add(new HarpieFeatherDuster(cardInfo[1], cardInfo[2]));
-					break;
-				case "Heavy Storm":
-					temp.add(new HeavyStorm(cardInfo[1], cardInfo[2]));
-					break;
-				case "Mage Power":
-					temp.add(new MagePower(cardInfo[1], cardInfo[2]));
-					break;
-				case "Monster Reborn":
-					temp.add(new MonsterReborn(cardInfo[1], cardInfo[2]));
-					break;
-				case "Pot of Greed":
-					temp.add(new PotOfGreed(cardInfo[1], cardInfo[2]));
-					break;
-				case "Raigeki":
-					temp.add(new Raigeki(cardInfo[1], cardInfo[2]));
-					break;
-				default:
-					throw new UnknownSpellCardException("Unknown Spell card",
+					case "Card Destruction" -> temp.add(new CardDestruction(cardInfo[1], cardInfo[2]));
+					case "Change Of Heart" -> temp.add(new ChangeOfHeart(cardInfo[1], cardInfo[2]));
+					case "Dark Hole" -> temp.add(new DarkHole(cardInfo[1], cardInfo[2]));
+					case "Graceful Dice" -> temp.add(new GracefulDice(cardInfo[1], cardInfo[2]));
+					case "Harpie's Feather Duster" -> temp.add(new HarpieFeatherDuster(cardInfo[1], cardInfo[2]));
+					case "Heavy Storm" -> temp.add(new HeavyStorm(cardInfo[1], cardInfo[2]));
+					case "Mage Power" -> temp.add(new MagePower(cardInfo[1], cardInfo[2]));
+					case "Monster Reborn" -> temp.add(new MonsterReborn(cardInfo[1], cardInfo[2]));
+					case "Pot of Greed" -> temp.add(new PotOfGreed(cardInfo[1], cardInfo[2]));
+					case "Raigeki" -> temp.add(new Raigeki(cardInfo[1], cardInfo[2]));
+					default -> throw new UnknownSpellCardException("Unknown Spell card",
 							path, lineNumber, cardInfo[1]);
-
 				}
-
 			}
-
 		}
 
 		br.close();
-
 		return (temp);
-
 	}
 
 	private void buildDeck(ArrayList<Card> Monsters, ArrayList<Card> Spells) {
+
+		Logger.logs().info("Deck - buildDeck monstersSize: " + Monsters.size() + " " + "spellsSize: " + Spells.size() );
 
 		int monstersQouta = 15;
 		int spellsQouta = 5;
@@ -235,124 +186,90 @@ public class Deck {
 		Random r = new Random();
 
 		for (; monstersQouta > 0; monstersQouta--) {
+			MonsterCard monster = (MonsterCard) monsters.get(r.nextInt(monsters.size()));
 
-			MonsterCard monster = (MonsterCard) monsters.get(r.nextInt(monsters
-					.size()));
-
-			MonsterCard clone = new MonsterCard(monster.getName(),
-					monster.getDescription(), monster.getLevel(),
-					monster.getAttackPoints(), monster.getDefensePoints());
+			MonsterCard clone = new MonsterCard(monster.getName(), monster.getDescription(), monster.getLevel(), monster.getAttackPoints(), monster.getDefensePoints());
 			clone.setMode(monster.getMode());
 			clone.setHidden(monster.isHidden());
 			clone.setLocation(Location.DECK);
 
 			deck.add(clone);
-
 		}
 
 		for (; spellsQouta > 0; spellsQouta--) {
-
 			Card spell = spells.get(r.nextInt(spells.size()));
-
 			SpellCard clone;
 
 			if (spell instanceof CardDestruction) {
-
-				clone = new CardDestruction(spell.getName(),
-						spell.getDescription());
+				clone = new CardDestruction(spell.getName(), spell.getDescription());
 				clone.setLocation(Location.DECK);
 				deck.add(clone);
 				continue;
-
 			}
 
 			if (spell instanceof ChangeOfHeart) {
-
-				clone = new ChangeOfHeart(spell.getName(),
-						spell.getDescription());
+				clone = new ChangeOfHeart(spell.getName(), spell.getDescription());
 				clone.setLocation(Location.DECK);
 				deck.add(clone);
 				continue;
-
 			}
 
 			if (spell instanceof DarkHole) {
-
 				clone = new DarkHole(spell.getName(), spell.getDescription());
 				clone.setLocation(Location.DECK);
 				deck.add(clone);
 				continue;
-
 			}
 
 			if (spell instanceof GracefulDice) {
-
-				clone = new GracefulDice(spell.getName(),
-						spell.getDescription());
+				clone = new GracefulDice(spell.getName(), spell.getDescription());
 				clone.setLocation(Location.DECK);
 				deck.add(clone);
 				continue;
-
 			}
 
 			if (spell instanceof HarpieFeatherDuster) {
-
-				clone = new HarpieFeatherDuster(spell.getName(),
-						spell.getDescription());
+				clone = new HarpieFeatherDuster(spell.getName(), spell.getDescription());
 				clone.setLocation(Location.DECK);
 				deck.add(clone);
 				continue;
-
 			}
 
 			if (spell instanceof HeavyStorm) {
-
 				clone = new HeavyStorm(spell.getName(), spell.getDescription());
 				clone.setLocation(Location.DECK);
 				deck.add(clone);
 				continue;
-
 			}
 
 			if (spell instanceof MagePower) {
-
 				clone = new MagePower(spell.getName(), spell.getDescription());
 				clone.setLocation(Location.DECK);
 				deck.add(clone);
 				continue;
-
 			}
 
 			if (spell instanceof MonsterReborn) {
-
-				clone = new MonsterReborn(spell.getName(),
-						spell.getDescription());
+				clone = new MonsterReborn(spell.getName(), spell.getDescription());
 				clone.setLocation(Location.DECK);
 				deck.add(clone);
 				continue;
-
 			}
 
 			if (spell instanceof PotOfGreed) {
-
 				clone = new PotOfGreed(spell.getName(), spell.getDescription());
 				clone.setLocation(Location.DECK);
 				deck.add(clone);
 				continue;
-
 			}
 
 			if (spell instanceof Raigeki) {
-
 				clone = new Raigeki(spell.getName(), spell.getDescription());
 				clone.setLocation(Location.DECK);
 				deck.add(clone);
 				continue;
-
 			}
-
 		}
-
 	}
 
 	private void shuffleDeck() {
@@ -361,11 +278,13 @@ public class Deck {
 
 	}
 
-	public ArrayList<Card> drawNCards(int n) {
+	public ArrayList<Card> drawNCards(int quantidade) {
 
-		ArrayList<Card> cards = new ArrayList<Card>(n);
+		Logger.logs().info("Deck - drawNCards quantidade: " + quantidade );
 
-		for (int i = 0; i < n; i++)
+		ArrayList<Card> cards = new ArrayList<Card>(quantidade);
+
+		for (int i = 0; i < quantidade; i++)
 			cards.add(deck.remove(0));
 
 		return (cards);
@@ -373,6 +292,8 @@ public class Deck {
 	}
 
 	public Card drawOneCard() {
+
+		Logger.logs().info("Deck - drawOneCard" );
 
 		return (deck.remove(0));
 

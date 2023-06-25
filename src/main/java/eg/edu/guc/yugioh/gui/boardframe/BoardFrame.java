@@ -53,6 +53,7 @@ public class BoardFrame extends JFrame implements ActionListener{
 	}
 
 	private void initializeAttributes(){
+
 		fieldPanel = new FieldPanel();
 		activeHandPanel = new HandPanel(true);
 		opponentHandPanel = new HandPanel(false);
@@ -119,7 +120,7 @@ public class BoardFrame extends JFrame implements ActionListener{
 
 	public void updateBoardFrame() {
 
-			Logger.startLogs().info("BoardFrame - updateBoardFrame");
+			Logger.logs().info("BoardFrame - updateBoardFrame");
 
 			activeHandPanel.updateHand();
 			opponentHandPanel.updateHand();
@@ -200,7 +201,7 @@ public class BoardFrame extends JFrame implements ActionListener{
 
 	public void resetHandlers() {
 
-		Logger.startLogs().info("BoardFrame - resetHandlers");
+		Logger.logs().info("BoardFrame - resetHandlers");
 
 		attackingMonster = null;
 		toSwitch = false;

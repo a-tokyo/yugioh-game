@@ -21,7 +21,9 @@ public class SpellButton extends CardButton implements ActionListener{
 	public SpellButton(SpellCard spell) {
 		super(new ImageIcon("images/"+spell.getName()+".png"));
 		this.spell = spell;
-		setToolTipText(spell.getName()+"\n"+spell.getDescription());
+		String spellInfo = String.format("<html><div>%s<br>%s</div></html>", spell.getName(), spell.getDescription());
+		setToolTipText(spellInfo);
+		//setToolTipText("<html>"+spell.getName()+"<br>"+spell.getDescription()+"</html>");
 		setVisible(true);
 		addActionListener(this);
 		validate();
