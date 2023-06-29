@@ -1,0 +1,40 @@
+# Arquivos e diretórios específicos do Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/wrapper/maven-wrapper.jar
+!/.mvn/wrapper/maven-wrapper.properties
+
+# Arquivos e diretórios específicos do IDE IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Arquivos de log
+*.log
+logs/
+
+# Arquivos de compilação Java
+*.class
+
+# Arquivos de build do Gradle
+build/
+.gradle/
+gradle/
+.gradle.kts/
+gradlew
+gradlew.bat
+gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
+# Outros arquivos e diretórios comuns
+.DS_Store
+Thumbs.db
