@@ -7,6 +7,8 @@ import javax.swing.*;
 
 import eg.edu.guc.yugioh.cards.Card;
 import eg.edu.guc.yugioh.cards.MonsterCard;
+import eg.edu.guc.yugioh.configsGlobais.Logger;
+
 @SuppressWarnings("serial")
 public class GraveyardButton extends JButton {
 	private static ImageIcon graveyard = new ImageIcon("images/Graveyard.png");
@@ -20,12 +22,20 @@ public class GraveyardButton extends JButton {
 
 	public void updateGraveyard(){
 		ArrayList<Card> graveyardList ;
+
+		Logger.logs().info("GraveyardButton - updateGraveyard active: " + active);
+
 		if(active)
 			graveyardList = Card.getBoard().getActivePlayer().getField().getGraveyard();
 		else graveyardList = Card.getBoard().getOpponentPlayer().getField().getGraveyard();
 		if(graveyardList.size()>0){
 			Card current = graveyardList.get(graveyardList.size()-1);
-			if(current instanceof MonsterCard){
+
+			boolean isInstanceMonster = current instanceof MonsterCard;
+
+			Logger.logs().info("GraveyardButton - updateGraveyard isInstanceMonster: " + isInstanceMonster);
+
+			if(isInstanceMonster){
 				setIcon(new ImageIcon("images/"+current.getName()+".jpg"));
 				setToolTipText(current.getName()+"\n ATK: "+((MonsterCard)current).getAttackPoints()+"\n DEF: "+((MonsterCard)current).getDefensePoints()+"\n Level: "+((MonsterCard)current).getLevel());
 			}

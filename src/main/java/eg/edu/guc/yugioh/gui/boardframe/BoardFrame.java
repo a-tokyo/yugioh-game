@@ -33,7 +33,7 @@ public class BoardFrame extends JFrame implements ActionListener{
 	private ArrayList<MonsterCard> sacrificedMonsters = new ArrayList<MonsterCard>();
 	private int sacrificesCount;
 	private MonsterCard monsterToSummon;
-	
+	private CountPhase CountPhase;
 	public BoardFrame(){
 		super("Yu-Gi-Oh!");
 		setFramePrefrences();
@@ -53,12 +53,14 @@ public class BoardFrame extends JFrame implements ActionListener{
 	}
 
 	private void initializeAttributes(){
+
 		fieldPanel = new FieldPanel();
 		activeHandPanel = new HandPanel(true);
 		opponentHandPanel = new HandPanel(false);
 		opponentHandPanel.setPreferredSize(new Dimension(activeHandPanel.getPreferredSize().width,15));
 		westImagesPanel = new WestImagesPanel();
 		eastButtonsPanel =new EastButtonsPanel();
+		CountPhase = new CountPhase(1);
 	}
 
 	private void addPanels(){
@@ -71,7 +73,8 @@ public class BoardFrame extends JFrame implements ActionListener{
 		dataPanel.add(fieldPanel, BorderLayout.CENTER);
 		dataPanel.add(activeHandPanel,BorderLayout.SOUTH);
 		dataPanel.add(eastButtonsPanel,BorderLayout.EAST);
-		dataPanel.add(westImagesPanel,BorderLayout.WEST);
+		//dataPanel.add(westImagesPanel,BorderLayout.WEST);
+		dataPanel.add(CountPhase,BorderLayout.WEST);
 		add(dataPanel);
 	}
 	
@@ -117,7 +120,7 @@ public class BoardFrame extends JFrame implements ActionListener{
 
 	public void updateBoardFrame() {
 
-			Logger.startLogs().info("BoardFrame - updateBoardFrame");
+			Logger.logs().info("BoardFrame - updateBoardFrame");
 
 			activeHandPanel.updateHand();
 			opponentHandPanel.updateHand();
@@ -198,7 +201,7 @@ public class BoardFrame extends JFrame implements ActionListener{
 
 	public void resetHandlers() {
 
-		Logger.startLogs().info("BoardFrame - resetHandlers");
+		Logger.logs().info("BoardFrame - resetHandlers");
 
 		attackingMonster = null;
 		toSwitch = false;
@@ -212,5 +215,9 @@ public class BoardFrame extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		this.toBack();
+	}
+
+	public CountPhase getCurrentCountPhase() {
+		return CountPhase;
 	}
 }

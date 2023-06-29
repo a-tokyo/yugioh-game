@@ -22,7 +22,7 @@ public class PlayerNamePanel extends JPanel {
 		this.active = active;
 		setLayout(new BorderLayout());
 		setOpaque(false);
-		setPreferredSize(new Dimension(100,200));
+		setPreferredSize(new Dimension(200,200));
 		addPanels();
 		validate();
 	}
@@ -31,15 +31,15 @@ public class PlayerNamePanel extends JPanel {
 		add(currentPhaseLabel,BorderLayout.SOUTH);
 		add(lifePointsLabel,BorderLayout.CENTER);
 		add(playerNameLabel, BorderLayout.NORTH);
-		lifePointsLabel.setPreferredSize(new Dimension(30,35));
-		lifePointsLabel.setFont(new Font("Cambria",Font.ITALIC,20));
-		lifePointsLabel.setForeground(Color.ORANGE);
-		playerNameLabel.setPreferredSize(new Dimension(30,35));
-		playerNameLabel.setFont(new Font("Cambria",Font.ITALIC,20));
-		playerNameLabel.setForeground(Color.ORANGE);
-		currentPhaseLabel.setPreferredSize(new Dimension(30,35));
-		currentPhaseLabel.setFont(new Font("Cambria",Font.ITALIC,20));
-		currentPhaseLabel.setForeground(Color.ORANGE);
+		lifePointsLabel.setPreferredSize(new Dimension(50,35));
+		lifePointsLabel.setFont(new Font("Cambria",Font.ITALIC | Font.BOLD,30));
+		lifePointsLabel.setForeground(Color.WHITE);
+		playerNameLabel.setPreferredSize(new Dimension(50,35));
+		playerNameLabel.setFont(new Font("Cambria",Font.ITALIC | Font.BOLD,30));
+		playerNameLabel.setForeground(Color.WHITE);
+		currentPhaseLabel.setPreferredSize(new Dimension(50,35));
+		currentPhaseLabel.setFont(new Font("Cambria",Font.ITALIC | Font.BOLD,30));
+		currentPhaseLabel.setForeground(Color.WHITE);
 		updateAll();
 	}
 

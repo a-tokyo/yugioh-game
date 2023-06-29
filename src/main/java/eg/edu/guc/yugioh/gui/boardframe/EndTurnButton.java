@@ -11,6 +11,7 @@ import javax.swing.SwingConstants;
 
 import eg.edu.guc.yugioh.cards.Card;
 import eg.edu.guc.yugioh.gui.GUI;
+import eg.edu.guc.yugioh.gui.otherframes.PlayerSwitch;
 
 @SuppressWarnings("serial")
 public class EndTurnButton extends JButton implements ActionListener{
@@ -19,16 +20,22 @@ public class EndTurnButton extends JButton implements ActionListener{
 		super("End Turn",new ImageIcon("images/EndTurn.jpg"));
 		setPreferredSize(new Dimension(300,165));
 		setHorizontalTextPosition(SwingConstants.CENTER);
-		setFont(new Font("", Font.ITALIC, 18));
+		setFont(new Font("", Font.ITALIC| Font.BOLD, 40));
 		setForeground(java.awt.Color.WHITE);
 		addActionListener(this);
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
+		PlayerSwitch ps = new PlayerSwitch();
 		Card.getBoard().getActivePlayer().endTurn();
 		GUI.getBoardFrame().getFieldPanel().getActivePlayerPanel().getPlayerNamePanel().updateAll();
 		GUI.getBoardFrame().getFieldPanel().getOpponentPlayerPanel().getPlayerNamePanel().updateAll();
+		GUI.getBoardFrame().getCurrentCountPhase().updateCount();
+		// Do the PlayerSwitch frame appear here
+		ps.askForSwitching();
+
 		GUI.getBoardFrame().getWestImagesPanel().swap();
+		// PlayerSwitch frame appears here
 		GUI.getBoardFrame().updateBoardFrame();
 		GUI.getBoardFrame().resetHandlers(); // added
 		GUI.getBoardFrame().getActiveHandPanel().repaint();

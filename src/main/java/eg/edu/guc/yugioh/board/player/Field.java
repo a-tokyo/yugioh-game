@@ -5,6 +5,7 @@ import eg.edu.guc.yugioh.cards.Location;
 import eg.edu.guc.yugioh.cards.Mode;
 import eg.edu.guc.yugioh.cards.MonsterCard;
 import eg.edu.guc.yugioh.cards.spells.SpellCard;
+import eg.edu.guc.yugioh.configsGlobais.Logger;
 import eg.edu.guc.yugioh.exceptions.DefenseMonsterAttackException;
 import eg.edu.guc.yugioh.exceptions.IllegalSpellTargetException;
 import eg.edu.guc.yugioh.exceptions.MonsterMultipleAttackException;
@@ -312,6 +313,8 @@ public class Field {
 
 	public int discardHand() {
 
+		Logger.logs().info("Field - discardHand" );
+
 		int discardedCards = hand.size();
 		for (int i = 0; i < hand.size();)
 			graveyard.add(hand.remove(i));
@@ -338,6 +341,8 @@ public class Field {
 			}
 
 		}
+
+		Logger.logs().info("Field - discardHand strongest monster: " + strongest.getName() );
 
 		return (strongest);
 

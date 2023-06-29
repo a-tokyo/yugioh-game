@@ -9,7 +9,7 @@ public class PlayerAreaPanel extends JPanel {
 	private MonstersSpellsPanel monsterSpellPanel;
 	private DeckGraveyard deckGraveyardPanel;
 	private PlayerNamePanel playerNamePanel;
-	
+
 	public PlayerAreaPanel(boolean ao){
 		super();
 		setOpaque(false);
@@ -39,6 +39,7 @@ public class PlayerAreaPanel extends JPanel {
 	public PlayerNamePanel getPlayerNamePanel() {
 		return playerNamePanel;
 	}
+
 	public void setPlayerNamePanel(PlayerNamePanel playerNamePanel) {
 		this.playerNamePanel = playerNamePanel;
 	}
