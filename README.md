@@ -6,7 +6,9 @@ Trabalho de Manutenção de Software da UTFPR.
 O objetivo é deixar esse game de Yugioh com melhores praticas de engenharia de software. 
 
 ## Como Rodar:
-- Basta rodar o arquivo Main.java
+- Utilizar a JDK Amazon Corretto 16.0.2 (Project structure > JDK).
+- Utilizar o ciclo de vida do Maven para instalar, compilar e build.
+- Rodar o arquivo Main.java (src/main/java/eg/edu/guc/yugioh/gui/Main.java)
 
 ## IDE:
 - Recomendamos o IntelliJ
