@@ -1,7 +1,6 @@
 package eg.edu.guc.yugioh.gui.boardframe;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.*;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -11,21 +10,21 @@ import eg.edu.guc.yugioh.gui.otherframes.PlayerSwitch;
 public class WestImagesPanel extends JPanel {
 	private JLabel activeImage = new JLabel(new ImageIcon("images/YugiDuel.jpg"));
 	private JLabel opponentImage = new JLabel(new ImageIcon("images/KaibaDuel.jpg"));
-	Dimension dimension = new Dimension(300,760-15-new CardButton().getPreferredSize().height);
+	private CountPhase CountPhase;
+	Dimension dimension = new Dimension(200,760-15-new CardButton().getPreferredSize().height);
 	boolean swapped = false;
 	//PlayerSwitch ps = new PlayerSwitch();
 
 
 	public WestImagesPanel() {
 		setLayout(new BorderLayout());
-		activeImage.setPreferredSize(new Dimension(dimension.width,dimension.height/2-7));
-		opponentImage.setPreferredSize(new Dimension(dimension.width,dimension.height/2-17));
+		activeImage.setPreferredSize(new Dimension(dimension.width,dimension.height/2-20));
+		opponentImage.setPreferredSize(new Dimension(dimension.width,dimension.height/2-30));
+		CountPhase = new CountPhase(1);
 		setOpaque(false);
-		JPanel separator = new JPanel();
-		separator.setOpaque(false);
-		separator.setPreferredSize(new Dimension(300,5));
+
 		add(activeImage,BorderLayout.SOUTH);
-		add(separator,BorderLayout.CENTER);
+		add(CountPhase,BorderLayout.CENTER);
 		add(opponentImage,BorderLayout.NORTH);
 		setPreferredSize(dimension); // add 5 
 		validate();
@@ -45,5 +44,8 @@ public class WestImagesPanel extends JPanel {
 			add(opponentImage,BorderLayout.NORTH);
 			swapped = false;
 		}
+	}
+	public CountPhase getCurrentCountPhase() {
+		return CountPhase;
 	}
 }

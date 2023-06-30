@@ -30,7 +30,7 @@ public class EndTurnButton extends JButton implements ActionListener{
 		Card.getBoard().getActivePlayer().endTurn();
 		GUI.getBoardFrame().getFieldPanel().getActivePlayerPanel().getPlayerNamePanel().updateAll();
 		GUI.getBoardFrame().getFieldPanel().getOpponentPlayerPanel().getPlayerNamePanel().updateAll();
-		GUI.getBoardFrame().getCurrentCountPhase().updateCount();
+		GUI.getBoardFrame().getWestImagesPanel().getCurrentCountPhase().updateCount();
 		// Do the PlayerSwitch frame appear here
 		ps.askForSwitching();
 

@@ -16,6 +16,7 @@ import eg.edu.guc.yugioh.cards.spells.MagePower;
 import eg.edu.guc.yugioh.cards.spells.SpellCard;
 import eg.edu.guc.yugioh.configsGlobais.Logger;
 import eg.edu.guc.yugioh.gui.GUI;
+import eg.edu.guc.yugioh.gui.otherframes.AnimationFrame;
 
 @SuppressWarnings("serial")
 public class HandOptionsFrame extends JFrame implements ActionListener{
@@ -155,6 +156,8 @@ public class HandOptionsFrame extends JFrame implements ActionListener{
 				GUI.errorFrame(e);
 			}
 		}
+		AnimationFrame an = new AnimationFrame();
+		an.AnimationAsk();
 	}
 	private void monsterOptions(ActionEvent e){
 

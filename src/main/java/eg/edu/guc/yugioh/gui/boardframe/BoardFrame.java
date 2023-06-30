@@ -12,8 +12,7 @@ import eg.edu.guc.yugioh.cards.MonsterCard;
 import eg.edu.guc.yugioh.cards.spells.SpellCard;
 import eg.edu.guc.yugioh.configsGlobais.Logger;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -33,7 +32,7 @@ public class BoardFrame extends JFrame implements ActionListener{
 	private ArrayList<MonsterCard> sacrificedMonsters = new ArrayList<MonsterCard>();
 	private int sacrificesCount;
 	private MonsterCard monsterToSummon;
-	private CountPhase CountPhase;
+
 	public BoardFrame(){
 		super("Yu-Gi-Oh!");
 		setFramePrefrences();
@@ -46,6 +45,8 @@ public class BoardFrame extends JFrame implements ActionListener{
 		setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1367, 792);
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 //		setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);		
 //		setUndecorated(true);
 		setVisible(true);	
@@ -60,7 +61,6 @@ public class BoardFrame extends JFrame implements ActionListener{
 		opponentHandPanel.setPreferredSize(new Dimension(activeHandPanel.getPreferredSize().width,15));
 		westImagesPanel = new WestImagesPanel();
 		eastButtonsPanel =new EastButtonsPanel();
-		CountPhase = new CountPhase(1);
 	}
 
 	private void addPanels(){
@@ -73,8 +73,7 @@ public class BoardFrame extends JFrame implements ActionListener{
 		dataPanel.add(fieldPanel, BorderLayout.CENTER);
 		dataPanel.add(activeHandPanel,BorderLayout.SOUTH);
 		dataPanel.add(eastButtonsPanel,BorderLayout.EAST);
-		//dataPanel.add(westImagesPanel,BorderLayout.WEST);
-		dataPanel.add(CountPhase,BorderLayout.WEST);
+		dataPanel.add(westImagesPanel,BorderLayout.WEST);
 		add(dataPanel);
 	}
 	
@@ -217,7 +216,4 @@ public class BoardFrame extends JFrame implements ActionListener{
 		this.toBack();
 	}
 
-	public CountPhase getCurrentCountPhase() {
-		return CountPhase;
-	}
 }
